@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-4.1.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-4.1.xsd">
+	
+<!--	 基于正则表达式扫描注解
+	<context:component-scan base-package="com.hegx">
+		&lt;!&ndash;<context:include-filter type="regex"
+			expression=".service.*" />&ndash;&gt;
+	</context:component-scan>-->
+	<!-- 扫描 -->
+	<context:component-scan base-package="com.hegx"></context:component-scan>
+	
+	<!-- 注解方式开发： 开启切面代理 使得spring认识 @Aspect -->	
+	<aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
+
+	<!-- 导入mybatis配置文件 -->
+	<import resource="classpath:spring-mybatis.xml" />
+
+</beans>

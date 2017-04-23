@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hegx.dao.UserDao">
+
+	<!--仪器级别表 ，下面引用，方便修改表名 -->
+	<sql id="T_USER"> t_user </sql>
+
+	<!-- sql片段，查询用的字段,避免用“*” -->
+	<sql id="selectFieldSQL">
+		<![CDATA[
+		SELECT 
+		  id,
+		  userName,
+		  passWord,
+		  realName,
+		  permission,
+		  department,
+		  enterTime
+		]]>
+	</sql>
+
+	<resultMap id="BeanMap" type="com.hegx.dto.UserEntityDto">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="userName" property="userName" jdbcType="VARCHAR" />
+		<result column="passWord" property="passWord" jdbcType="VARCHAR" />
+		<result column="realName" property="realName" jdbcType="VARCHAR" />
+		<result column="permission" property="permission" jdbcType="INTEGER" />
+		<result column="department" property="department" jdbcType="VARCHAR" />
+		<result column="enterTime" property="enterTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<!-- 新增 -->
+	<insert id="insert" parameterType="com.hegx.dto.UserEntityDto">
+
+		INSERT INTO
+		<include refid="T_USER" />
+		(
+		userName,
+		passWord,
+		realName,
+		permission,
+		department,
+		enterTime
+		) VALUES (
+		#{userName},
+		#{passWord},
+		#{realName},
+		#{permission},
+		#{department},
+		#{enterTime}
+		)
+	</insert>
+
+	<!-- 更新 -->
+	<update id="update" parameterType="com.hegx.dto.UserEntityDto">
+		UPDATE
+		<include refid="T_USER" />
+		<set>
+			<if test="userName != null">
+				userName = #{userName},
+			</if>
+			<if test="passWord != null">
+				passWord = #{passWord},
+			</if>
+			<if test="realName != null">
+				realName = #{realName},
+			</if>
+			<if test="permission != null">
+				permission = #{permission},
+			</if>
+			<if test="department != null">
+				department = #{department},
+			</if>
+			<if test="enterTime != null">
+				enterTime = #{enterTime}
+			</if>
+		</set>
+		WHERE id = #{id,jdbcType=INTEGER}
+	</update>
+
+
+	<!--真删除 -->
+	<delete id="deleteById" parameterType="Integer">
+		DELETE FROM
+		<include refid="T_USER" />
+		WHERE id = #{id}
+	</delete>
+
+	<!-- 根据id查询 -->
+	<select id="getById" parameterType="Integer" resultMap="BeanMap">
+		<include refid="selectFieldSQL" />
+		FROM
+		<include refid="T_USER" />
+		<![CDATA[
+		 WHERE id = #{id,jdbcType=INTEGER}
+		]]>
+	</select>
+
+
+	<!-- 查询所有未删除的数据 -->
+	<select id="getAll" resultMap="BeanMap">
+		<include refid="selectFieldSQL" />
+		FROM
+		<include refid="T_USER" />
+	</select>
+
+	<!-- 验证用户名是否存在 -->
+	<select id="checkUser" parameterType="com.hegx.dto.UserEntityDto" resultMap="BeanMap">
+
+		<include refid="selectFieldSQL" />
+		FROM
+		<include refid="T_USER" />
+		<where>
+			userName = #{userName}
+		</where>
+	</select>
+
+
+
+	<!-- 拼接查询条件 -->
+	<!--<sql id="condition_sql">
+		<if test="entity.id != null and entity.id != ''">
+			AND ID = #{entity.id,jdbcType=INTEGER}
+		</if>
+		<if test="entity.userName != null and entity.userName != ''">
+			AND USER_NAME LIKE CONCAT(CONCAT('%',
+			#{entity.userName,jdbcType=VARCHAR}), '%')
+		</if>
+		<if test="entity.passWord != null and entity.passWord != ''">
+			AND PASS_WORD LIKE CONCAT(CONCAT('%',
+			#{entity.passWord,jdbcType=VARCHAR}), '%')
+		</if>
+		<if test="entity.status != null and entity.status != ''">
+			AND STATUS = #{entity.status,jdbcType=INTEGER}
+		</if>
+		<if test="entity.createBy != null and entity.createBy != ''">
+			AND CREATE_BY = #{entity.createBy,jdbcType=VARCHAR}
+		</if>
+		<if test="entity.createTime != null and entity.createTime != ''">
+			AND CREATE_TIME = #{entity.createTime,jdbcType=TIMESTAMP}
+		</if>
+		<if test="entity.modifyBy != null and entity.modifyBy != ''">
+			AND MODIFY_BY =
+			#{entity.modifyBy,jdbcType=VARCHAR}
+		</if>
+		<if test="entity.modifyTime != null and entity.modifyTime != ''">
+			AND MODIFY_TIME = #{entity.modifyTime,jdbcType=TIMESTAMP}
+		</if>
+
+		<if test="entity.userTypeId != null and entity.userTypeId != ''">
+			AND userTypeId = #{entity.userTypeId,jdbcType=INTEGER}
+		</if>
+
+		<if test="entity.corpCode != null and entity.corpCode != '' ">
+			AND CORP_CODE LIKE CONCAT(CONCAT('%',
+			#{entity.corpCode,jdbcType=VARCHAR}), '%')
+		</if>
+		<if test="true">
+			AND DELETED = 0
+		</if>
+		<if test="entity.version != null and entity.version != ''">
+			AND VERSION = #{entity.version,jdbcType=INTEGER}
+		</if>
+	</sql>-->
+
+</mapper>

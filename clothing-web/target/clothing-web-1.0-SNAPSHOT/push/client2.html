@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang='zh-cn'>
+<head>
+    <meta charset='utf-8' />
+    <!--[if !IE]>
+    -->
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='/Public/js/jquery-2.1.0.min.js'>" + "<" + "/script>");</script>
+    <!-- <![endif]-->
+
+    <!--[if IE]>
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='/Public/js/jquery-1.11.0.min.js'>"+"<"+"/script>");</script>
+    <![endif]-->
+    <script type="text/javascript">
+        var flag = true;
+        var runing = false;
+        var $url="/push/server2";
+        var url2 = "/push/msgcount";
+
+        if(window.Notification){
+            if (window.Notification.permission == "granted") {
+                push_start();
+            }else{
+                window.Notification.requestPermission();
+            }
+        }else{
+            push_start();
+        }
+
+        function sendPush($url, vars, callback) {
+            return $.ajax({
+                type : "POST",
+                url : $url,
+                data : vars + "&ajax=1",
+                dataType : "json",
+                success : callback
+            });
+        }
+
+        function push_start() {
+            sendPush(url2,'',function(data){
+                if(data.info > 0){
+                    parent.document.getElementById('msgcount').style.display='block';
+                    $('body',parent.document).find('#msgcount').html(data.info);
+                }else{
+                    parent.document.getElementById('msgcount').style.display='none';
+                }
+            });
+
+            sendPush($url, '', function(data) {
+                if (data.info != "no-data") {
+                    //window.parent.ui_info(data.info);
+                    showNotification(data.info);
+                }
+                if (flag) {
+                    push_start();
+                }
+            });
+        }
+
+        function push_stop() {
+            flag = false;
+        }
+
+        // 显示通知
+        function show(content) {
+            var notification = window.webkitNotifications.createNotification(
+                'images/icon48.png',
+                '有消息了',
+                content
+            );
+
+            /*
+             notification.onclick = function () {
+             chrome.tabs.create({url:MESSAGE});
+             this.cancel();
+             };*/
+
+            //15秒自动关闭
+            notification.ondisplay = function () {
+                var temp = this;
+                var fn = function () {
+                    temp.cancel();
+                };
+                window.setTimeout(fn, 15000);
+            };
+            notification.show();
+        }
+
+        function showNotification(content){
+            //oNotifications = window.Notification;
+            if (!window.Notification){
+                window.parent.ui_info(content);
+                return;
+            }
+            if (window.Notification.permission == "granted") {
+                show(content);
+            }else{
+                window.Notification.requestPermission();
+            }
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>

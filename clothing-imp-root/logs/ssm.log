@@ -1,0 +1,9 @@
+[INFO] [2017-04-22 20:53:36][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring.xml]
+[INFO] [2017-04-22 20:53:36][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+[INFO] [2017-04-22 20:53:37][org.springframework.context.support.GenericXmlApplicationContext]Refreshing org.springframework.context.support.GenericXmlApplicationContext@379619aa: startup date [Sat Apr 22 20:53:37 CST 2017]; root of context hierarchy
+[INFO] [2017-04-22 20:54:22][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring.xml]
+[INFO] [2017-04-22 20:54:22][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+[INFO] [2017-04-22 20:54:22][org.springframework.context.support.GenericXmlApplicationContext]Refreshing org.springframework.context.support.GenericXmlApplicationContext@379619aa: startup date [Sat Apr 22 20:54:22 CST 2017]; root of context hierarchy
+[INFO] [2017-04-22 20:56:28][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring.xml]
+[INFO] [2017-04-22 20:56:28][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+[INFO] [2017-04-22 20:56:28][org.springframework.context.support.GenericXmlApplicationContext]Refreshing org.springframework.context.support.GenericXmlApplicationContext@379619aa: startup date [Sat Apr 22 20:56:28 CST 2017]; root of context hierarchy

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../clothing-imp-root/clothing-imp-root.iml" filepath="$PROJECT_DIR$/../clothing-imp-root/clothing-imp-root.iml" />
+      <module fileurl="file://$PROJECT_DIR$/clothing-impl-integration.iml" filepath="$PROJECT_DIR$/clothing-impl-integration.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../clothing-impl-service/clothing-impl-service.iml" filepath="$PROJECT_DIR$/../clothing-impl-service/clothing-impl-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../clothing-web/clothing-web.iml" filepath="$PROJECT_DIR$/../clothing-web/clothing-web.iml" />
+    </modules>
+  </component>
+</project>
