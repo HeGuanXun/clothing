@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hegx.dao.OrderDao">
+
+	<!--仪器级别表 ，下面引用，方便修改表名 -->
+	<sql id="t_order"> t_order </sql>
+
+	<!-- sql片段，查询用的字段,避免用“*” -->
+	<sql id="selectFieldSQL">
+		<![CDATA[
+		SELECT
+		  orderId,
+		  fashionId,
+		  codeId,,
+		  className,
+		  phoneNumber,
+		  qq,
+		  color,
+		  otherFashion,
+		  money,
+		  earnest,
+		  print,
+		  getOrderDate,
+		  deliveryDate,
+		  remarks,
+		  way,
+		  person,
+		  relationPhone,
+		  address,
+		  createDate,
+		  endReason,
+		  endDate,
+		  belong,
+		  status,
+		  orderNumber
+		]]>
+	</sql>
+
+	<resultMap id="BeanMap" type="com.hegx.dao.OrderDao">
+		<id column="orderId" property="orderId" jdbcType="BIGINT" />
+		<result column="fashionId" property="fashionId" />
+		<result column="codeId" property="codeId" />
+		<result column="className" property="className" />
+		<result column="phoneNumber" property="phoneNumber" />
+		<result column="qq" property="qq" />
+		<result column="color" property="color" />
+		<result column="otherFashion" property="otherFashion" />
+		<result column="money" property="money" />
+		<result column="earnest" property="earnest" />
+		<result column="print" property="print" />
+		<result column="getOrderDate" property="getOrderDate" />
+		<result column="deliveryDate" property="deliveryDate" />
+		<result column="remarks" property="remarks" />
+		<result column="way" property="way" />
+		<result column="person" property="person" />
+		<result column="relationPhone" property="relationPhone" />
+		<result column="address" property="address" />
+		<result column="createDate" property="createDate" />
+		<result column="endReason" property="endReason" />
+		<result column="belong" property="belong" />
+		<result column="status" property="status" />
+		<result column="orderNumber" property="orderNumber" />
+	</resultMap>
+
+	<!-- 新增 -->
+	<insert id="insert" parameterType="com.hegx.dao.OrderDao">
+		INSERT INTO
+		<include refid="t_order" />
+		(
+		fashionId,
+		codeId,,
+		className,
+		phoneNumber,
+		qq,
+		color,
+		otherFashion,
+		money,
+		earnest,
+		print,
+		getOrderDate,
+		deliveryDate,
+		remarks,
+		way,
+		person,
+		relationPhone,
+		address,
+		createDate,
+		endReason,
+		endDate,
+		belong,
+		status,
+		orderNumber
+		) VALUES (
+		#{fashionId},
+		#{codeId},
+		#{className},
+		#{phoneNumber},
+		#{qq},
+		#{color},
+		#{otherFashion},
+		#{money},
+		#{earnest},
+		#{print},
+		#{getOrderDate},
+		#{deliveryDate},
+		#{remarks},
+		#{way},
+		#{person},
+		#{relationPhone},
+		#{address},
+		#{createDate},
+		#{endReason},
+		#{endDate},
+		#{belong},
+		#{status},
+		#{orderNumber}
+		)
+	</insert>
+
+	<!-- 更新 -->
+	<update id="update" parameterType="com.hegx.dao.OrderDao">
+		UPDATE
+		<include refid="t_order" />
+		<set>
+			<if test="fashionName != null">
+				fashionName = #{fashionName,jdbcType=VARCHAR}
+			</if>
+		</set>
+		WHERE id = #{id,jdbcType=INTEGER}
+	</update>
+
+
+	<!--真删除 -->
+	<delete id="deleteById" parameterType="Integer">
+		DELETE FROM
+		<include refid="t_order" />
+		WHERE id = #{id,jdbcType=INTEGER}
+	</delete>
+
+	<!-- 根据id查询 -->
+	<select id="getById" parameterType="Integer" resultMap="BeanMap">
+		<include refid="selectFieldSQL" />
+		FROM
+		<include refid="t_order" />
+		<![CDATA[
+		 WHERE orderId = #{orderId}
+		]]>
+	</select>
+
+
+	<!-- 查询所有未删除的数据 -->
+	<select id="getAll" resultMap="BeanMap">
+		<include refid="selectFieldSQL" />
+		FROM
+		<include refid="t_order" />
+	</select>
+
+	<!--根据名字来查询该数据是否已经存在库中-->
+	<select id="getByFashionName" resultMap="BeanMap" parameterType="com.hegx.dao.OrderDao">
+
+		<include refid="selectFieldSQL" />
+		FROM
+		<include refid="t_order" />
+		<![CDATA[
+		 WHERE fashionName = #{fashionName,jdbcType=VARCHAR}
+		]]>
+
+	</select>
+
+
+</mapper>

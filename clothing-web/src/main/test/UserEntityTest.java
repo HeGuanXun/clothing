@@ -34,8 +34,8 @@ public class UserEntityTest {
 	@Test
 	public void findById()
 	{
-		UserEntityDto userEntity = userService.getById(8);
-		System.out.println(userEntity.getId());
+		//UserEntityDto userEntity = userService.getById(8);
+		//System.out.println(userEntity.getId());
 	}
 	
 
