@@ -8,4 +8,5 @@ import com.hegx.po.OrderEntity;
  */
 public interface OrderService extends BaseService<OrderEntity> {
 
+    public OrderEntity getByOrderId(Long id);
 }

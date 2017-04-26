@@ -87,7 +87,7 @@
 			<dd>
 				<ul>
 					<li><a data-href="test.jsp" data-title="所有订单" href="javascript:void(0)">所有订单</a></li>
-					<li><a data-href="order-write.jsp" data-title="发单" href="javascript:void(0)">发单</a></li>
+					<li><a data-href="order/getAll" data-title="发单" href="javascript:void(0)">发单</a></li>
 				</ul>
 			</dd>
 			</dl>

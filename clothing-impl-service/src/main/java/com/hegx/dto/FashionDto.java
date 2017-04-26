@@ -2,8 +2,6 @@ package com.hegx.dto;
 
 import com.hegx.po.Fashion;
 
-import java.io.Serializable;
-
 /**
  * Created by hegx on 2017/4/22.
  */

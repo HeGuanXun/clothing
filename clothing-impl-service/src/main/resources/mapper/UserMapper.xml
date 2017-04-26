@@ -115,7 +115,18 @@
 		</where>
 	</select>
 
+	<!-- 登录验证 -->
+	<select id="checkLogin" parameterType="com.hegx.dto.UserEntityDto" resultMap="BeanMap">
 
+		<include refid="selectFieldSQL" />
+		FROM
+		<include refid="T_USER" />
+		<where>
+			userName = #{userName}
+			AND
+			passWord = #{passWord}
+		</where>
+	</select>
 
 	<!-- 拼接查询条件 -->
 	<!--<sql id="condition_sql">

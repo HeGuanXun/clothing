@@ -22,6 +22,9 @@ public interface UserDao {
 	 */
 	public UserEntityDto checkUser(UserEntityDto userEntityDto);
 
+	/**验证用户名跟密码*/
+	public UserEntityDto checkLogin(UserEntityDto userEntityDto);
+
 	public void insert(UserEntityDto userEntityDto);
 
 	public void deleteById(Integer id);

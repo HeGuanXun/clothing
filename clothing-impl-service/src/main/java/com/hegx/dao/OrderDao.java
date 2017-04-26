@@ -7,5 +7,5 @@ import com.hegx.po.OrderEntity;
  * Created by hegx on 2017/4/24.
  */
 public interface OrderDao extends BaseDao<OrderEntity> {
-
+    public OrderEntity getByOrderId(Long id);
 }

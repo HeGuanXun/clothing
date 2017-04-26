@@ -26,6 +26,7 @@ public interface BaseDao<T> {
 	// 根据ID删除记录
 	public int deleteById(Integer id);
 
-
+	//查询全部信息
+	public List<T> getAll();
 
 }

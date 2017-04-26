@@ -16,6 +16,9 @@ public interface UserService{
 	 */
 	public UserEntityDto checkUser(UserEntityDto userEntityDto);
 
+	/**验证用户名跟密码*/
+	public UserEntityDto checkLogin(UserEntityDto userEntityDto);
+
 	public void insert(UserEntityDto userEntityDto);
 
 	public void update(UserEntityDto userEntityDto);

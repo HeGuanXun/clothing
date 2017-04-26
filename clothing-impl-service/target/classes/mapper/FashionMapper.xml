@@ -18,7 +18,7 @@
 	<resultMap id="BeanMap" type="com.hegx.dto.FashionDto">
 		<id column="id" property="id" jdbcType="INTEGER" />
 		<result column="fashionName" property="fashionName" jdbcType="VARCHAR" />
-		<result column="createTime" property="createTime" jdbcType="date" />
+		<result column="createTime" property="createTime" jdbcType="DATE" />
 	</resultMap>
 
 	<!-- 新增 -->

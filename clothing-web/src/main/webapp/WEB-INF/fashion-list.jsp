@@ -30,6 +30,7 @@
     <script>DD_belatedPNG.fix('*');</script>
     <![endif]-->
     <title>款式信息</title>
+    <script src="js/moment.min.js"></script>
 </head>
 <body>
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span>款式管理 <span class="c-gray en">&gt;</span> 款式管理列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
@@ -65,7 +66,13 @@
                         <td><input type="checkbox" value="1" name=""></td>
                         <td >${i.index+1}</td>
                         <td>${fashion.fashionName}</td>
-                        <td>${fashion.createTime}</td>
+                        <td >
+                            <script>
+                                var date = '${fashion.createTime}'
+                                var datetime = moment(date).format("YYYY-MM-DD");
+                                document.write(datetime);
+                            </script>
+                         <%--${fashion.createTime}--%></td>
                         <td class="td-manage"><a title="编辑" href="javascript:;" onclick="admin_edit('款式编辑','fashion/getToEdit/${fashion.id}','1','600','300')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>
                             &nbsp;&nbsp;&nbsp;&nbsp;<a title="删除" href="javascript:;" onclick="admin_del(this,'${fashion.id}')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
                     </tr>
@@ -140,8 +147,6 @@
             });
         });
     }
-
-
     /*管理员-编辑*/
     function admin_edit(title,url,id,w,h){
         layer_show(title,url,w,h);

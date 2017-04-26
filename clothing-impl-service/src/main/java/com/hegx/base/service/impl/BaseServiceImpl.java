@@ -50,5 +50,8 @@ public abstract class BaseServiceImpl<T> implements BaseService<T> {
 		return resultCount;
 	}
 
-
+	@Override
+	public List<T> getAll() {
+		return getBaseDao().getAll();
+	}
 }

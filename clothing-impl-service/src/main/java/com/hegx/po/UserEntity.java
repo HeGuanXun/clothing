@@ -14,12 +14,22 @@ public class UserEntity implements Serializable {
 
 
 	private static final long serialVersionUID = 123343242341L;
+	private Integer id;
 	private String userName;
 	private String passWord;
 	private String realName;
 	private Integer permission;
 	private  String department;
 	private Date enterTime;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	public String getUserName() {
 		return userName;
 	}

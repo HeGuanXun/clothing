@@ -30,6 +30,7 @@
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
 <title>管理员列表</title>
+	<script src="js/moment.min.js"></script>
 </head>
 <body>
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 用户管理 <span class="c-gray en">&gt;</span> 用户管理列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
@@ -75,7 +76,13 @@
 						<td>${userEntityDto.userName}</td>
 						<td>${userEntityDto.realName}</td>
 						<td>${userEntityDto.department}</td>
-						<td>${userEntityDto.enterTime}</td>
+						<td>
+							<script>
+                                var date = '${userEntityDto.enterTime}'
+                                var datetime = moment(date).format("YYYY-MM-DD");
+                                document.write(datetime);
+							</script>
+						</td>
 						<td class="td-manage"><a title="编辑" href="javascript:;" onclick="admin_edit('用户编辑','admin/getToEdit/${userEntityDto.id}','1','800','500')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>
 							&nbsp;&nbsp;&nbsp;&nbsp;<a title="删除" href="javascript:;" onclick="admin_del(this,'${userEntityDto.id}')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
 					</tr>

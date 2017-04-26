@@ -13,16 +13,16 @@ public class UserServiceImpl  implements UserService {
 		@Autowired
 		private UserDao userDao;
 
-		@Override
-		public List<UserEntityDto> getAll() {
-			return userDao.getAll();
-		}
+	@Override
+	public List<UserEntityDto> getAll() {
+		return userDao.getAll();
+	}
 
-		@Override
-		public UserEntityDto checkUser(UserEntityDto userEntityDto) {
+	@Override
+	public UserEntityDto checkUser(UserEntityDto userEntityDto) {
 
-			return userDao.checkUser(userEntityDto);
-		}
+		return userDao.checkUser(userEntityDto);
+	}
 
 	@Override
 	public void insert(UserEntityDto userEntityDto) {
@@ -42,5 +42,10 @@ public class UserServiceImpl  implements UserService {
 	@Override
 	public UserEntityDto getById(Integer id) {
 		return userDao.getById(id);
+	}
+
+	@Override
+	public UserEntityDto checkLogin(UserEntityDto userEntityDto) {
+		return userDao.checkLogin(userEntityDto);
 	}
 }

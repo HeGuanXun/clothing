@@ -4,6 +4,7 @@
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -28,6 +29,7 @@
     <script>DD_belatedPNG.fix('*');</script>
     <![endif]-->
     <title>填写订单</title>
+    <script src="js/moment.min.js"></script>
 </head>
 <body>
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 订单管理 <span class="c-gray en">&gt;</span> 发单 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
@@ -45,16 +47,16 @@
 <script type="text/javascript" src="lib/hcharts/Highcharts/5.0.6/js/modules/exporting.js"></script>
 <div class="page-header">
     <h3 style="color: blue">&nbsp;&nbsp;&nbsp;&nbsp;添加订单</h3>
-</div><div class="operate panel panel-default">
-    <div class="panel-body">
-        <div class="pull-right" align="right">
-            <a onclick="add()" class="btn btn-sm btn-primary">新增</a>
-        </div>
-    </div>
-</div>
+
 <div class="col-xs-12">
-    <form id="form_data" name="form_data" method="post" class="well form-horizontal clearfix">
-        <input type="hidden" name="opmode" id="opmode" value="add">
+    <form  method="post" action="order/doAdd">
+      <%--  <div class="operate panel panel-default">
+            <div class="panel-body">
+                <div class="pull-right" align="right">
+                    <input type="submit" value="新增" class="btn btn-sm btn-primary"></input>
+                </div>
+            </div>
+        </div>--%>
         <table id="addorder" border=1 cellspacing=0 cellpadding=0 style='border-collapse:collapse;border:none;background-color: #EEEEEE'>
             <tr style='height:47.0pt'>
                 <td colspan="15" style="border: none;width: 753px;position: absolute;padding-top: 8px;">
@@ -73,7 +75,7 @@
                 </td>
                 <td  colspan=2 rowspan=2 style='width:60px;border:solid 1.0pt;border-top:solid 1.5pt;
   padding:0cm 5.4pt 0cm 5.4pt;height:13.1pt'>
-                    <input class="input-text" width="60px" type="text" id="cust_name" name="cust_name" check="require" msg="请输入客户名称">
+                    <input class="input-text" width="60px" type="text" id="customName" name="customName" check="require" msg="请输入客户名称">
                 </td>
                 <td  rowspan=2 style='width:48.9pt;border:solid 1.0pt;border-top:solid 1.5pt;
   padding:0cm 5.4pt 0cm 5.4pt;height:13.1pt'>
@@ -82,7 +84,7 @@
                 </td>
                 <td  colspan=2 rowspan=2 style='width:134.4pt;border:solid 1.0pt;border-top:solid 1.5pt;
   padding:0cm 5.4pt 0cm 5.4pt;height:13.1pt'>
-                    <input class="input-text" type="text" id="unit" name="unit" check="require" msg="请输入客户单位">
+                    <input class="input-text" type="text" id="className" name="className" check="require" msg="请输入客户单位">
                 </td>
                 <td width=53 rowspan=2 style='width:39.55pt;border:solid 1.0pt;border-top:solid 1.5pt;
   padding:0cm 5.4pt 0cm 5.4pt;height:13.1pt'>
@@ -94,7 +96,7 @@
                     <p style='text-align:center;'><span style='font-size:9.0pt;font-family:宋体'>Tel</span><span style='font-size:9.0pt;font-family:宋体'>：</span></p>
                 </td>
                 <td width=159 colspan=2 style='width:119.1pt;border:solid 1.0pt;border-top:solid 1.5pt;border-right:solid 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;height:13.1pt'>
-                    <input class="input-text" type="text" id="tel" name="tel" check="number" msg="客户电话只能是数字">
+                    <input class="input-text" type="text" id="phoneNumber" name="phoneNumber" check="number" msg="客户电话只能是数字">
                 </td>
             </tr>
             <tr style='height:13.1pt'>
@@ -118,12 +120,19 @@
   padding:0cm 5.4pt 0cm 5.4pt;height:26.95pt'>
                     <p style='text-align:center'><b><span style='font-size:9.0pt;font-family:宋体'>选定款式</span></b></p>
                 </td>
-                <td width=462 colspan=2 style='width:200px;border-left:none;border-bottom:solid 1.0pt;border-right:none;
+
+
+            <td width=462 colspan=2 style='width:200px;border-left:none;border-bottom:solid 1.0pt;border-right:none;
   padding:0cm 5.4pt 0cm 5.4pt;height:26.95pt'>
-                    <select name="style" id="style"  check="require" msg="请选择款式" class="select">
-                        <option value="">选择款式</option>
-                        <option value='A1优质莱卡棉纯色夏季短袖' >A1优质莱卡棉纯色夏季短袖</option><option value='A1优质莱卡棉撞边夏季短袖' >A1优质莱卡棉撞边夏季短袖</option><option value='A1优质莱卡棉插袖夏季短袖' >A1优质莱卡棉插袖夏季短袖</option><option value='A2高端莫代尔纯色夏季短袖' >A2高端莫代尔纯色夏季短袖</option><option value='A3高档莱卡棉夏季短袖' >A3高档莱卡棉夏季短袖</option><option value='A4进口优质普棉纯色夏季短袖' >A4进口优质普棉纯色夏季短袖</option><option value='A5普棉夏季短袖' >A5普棉夏季短袖</option><option value='A6-3D全身印夏季短袖' >A6-3D全身印夏季短袖</option><option value='A7莫代尔星空迷彩短袖' >A7莫代尔星空迷彩短袖</option><option value='A8进口高端纯棉纯色夏季短袖' >A8进口高端纯棉纯色夏季短袖</option><option value='A9大红鹰普棉纯色夏季短袖' >A9大红鹰普棉纯色夏季短袖</option><option value='A11高档莱卡条纹短袖' >A11高档莱卡条纹短袖</option><option value='A10运动网孔短袖' >A10运动网孔短袖</option><option value='B1普通珠地棉polo立领短袖' >B1普通珠地棉polo立领短袖</option><option value='B3高端珠地棉polo立领短袖' >B3高端珠地棉polo立领短袖</option><option value='B2优质珠地棉polo立领短袖' >B2优质珠地棉polo立领短袖</option><option value='B4高端珠地棉polo立领短袖（雪阳纯色）' >B4高端珠地棉polo立领短袖（雪阳纯色）</option><option value='B5高档珠地棉撞色polo衫（雪阳撞色）' >B5高档珠地棉撞色polo衫（雪阳撞色）</option><option value='C1优质莱卡棉春秋长袖' >C1优质莱卡棉春秋长袖</option><option value='D1高档不倒绒棒球服' >D1高档不倒绒棒球服</option><option value='D3优质抓绒纯色套头卫衣' >D3优质抓绒纯色套头卫衣</option><option value='D4优质抓绒纯色套头卫衣' >D4优质抓绒纯色套头卫衣</option><option value='D7健康精棉撞色拉链卫衣' >D7健康精棉撞色拉链卫衣</option><option value='D8优质薄款纯色圆领卫衣' >D8优质薄款纯色圆领卫衣</option><option value='D9优质薄款套头卫衣' >D9优质薄款套头卫衣</option><option value='D10优质薄款撞色套头卫衣' >D10优质薄款撞色套头卫衣</option><option value='D11套装系列' >D11套装系列</option><option value='E1假两件' >E1假两件</option><option value='E2连帽衫' >E2连帽衫</option><option value='E3普通、优质马甲系列' >E3普通、优质马甲系列</option><option value='E4正装系列' >E4正装系列</option><option value='E5球服系列' >E5球服系列</option><option value='E6日韩风套装' >E6日韩风套装</option><option value='暂未选定' >暂未选定</option><option value='E7日韩风衬衫' >E7日韩风衬衫</option><option value='其他款式' >其他款式</option><option value='E8民国风中山装' >E8民国风中山装</option><option value='帝峰衫国样衣布料集领取处' >帝峰衫国样衣布料集领取处</option><option value='F1冲锋衣' >F1冲锋衣</option>	</select>
-                </td>
+                <select name="style" id="style"  check="require" msg="请选择款式" class="select">
+                    <option value="">选择款式</option>
+                    <c:forEach items="${list}" var="fashion" varStatus="i">
+                    <option value="${fashion.fashionName}">${fashion.fashionName}</option>
+                    </c:forEach>
+                </select>
+            </td>
+
+
                 <td width=462 colspan="1" style='width:150px;border-left:none;border-bottom:solid 1.0pt;border-right:none; padding:0cm 5.4pt 0cm 5.4pt;height:26.95pt'>
                     <select name="color" id="color" class="select">
                         <option value="">请选择颜色</option>
@@ -139,7 +148,7 @@
   none;border-bottom:solid 1.0pt;border-right:solid 1.5pt;
   padding:5.5pt 5.4pt 0cm 5.4pt;height:26.95pt'>
                     <p style='text-align:center;'><span style='font-size:9.0pt;font-family:宋体'>
-                        <input class="input-text" type="text" name="other_style" id="other_style" placeholder="若无选定款式无符合条件记录，在此填写"  /></span></p>
+                        <input class="input-text" type="text" name="otherFashion" id="otherFashion" placeholder="若无选定款式无符合条件记录，在此填写"  /></span></p>
                 </td>
             </tr>
 
@@ -162,7 +171,6 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
                             <script type="text/javascript">_init_area();</script>
                              <input name="school" id="school" placeholder="输入学校等补充信息" class="input-text" style="width: 300px;"/>
                         </div>
-                        <div id="show"></div>
                     </div>
 
  </span></p>
@@ -231,7 +239,7 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
                 </td>
 
                 <td width=36 style='width:32pt;border:solid 1.0pt;border-right:solid 1.5pt;height:15.75pt;text-align: center'>
-                    <span id="totalCount"></span>
+                    <span id="totalCount" name="totalCount"></span>
                 </td>
             </tr>
             <tr style='height:15.7pt'>
@@ -243,7 +251,7 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
                 <td width=165 colspan=4 style='width:123.5pt;border-left:
    none;border-bottom:solid 1.0pt;border-right:solid 1.0pt;
    padding:5.4pt 5.4pt 0cm 5.4pt;height:15.7pt'>
-                    <p><span style='font-size:9.0pt;font-family:宋体'><input class="input-text" type="text" name="total_price" id="total_price" /></span></p>
+                    <p><span style='font-size:9.0pt;font-family:宋体'><input class="input-text" type="text" name="money" id="money" /></span></p>
                 </td>
                 <td width=112 colspan=2 rowspan=3 style='width:83.75pt;border:solid 1.0pt;
    padding:0cm 5.4pt 0cm 5.4pt;height:15.7pt'>
@@ -252,7 +260,7 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
                 <td width=200 colspan=3 rowspan=3 style='width:200.1pt;
    border-bottom:solid 1.0pt;border-right:solid 1.5pt;
    padding:0cm 5.4pt 0cm 5.4pt;height:15.7pt'>
-                    <textarea class="input-text" name="print_desc" id="print_desc"  check="require" msg="请说明印图技术" placeholder="请在此说明印图技术，如:2个单色图，或1个彩色图"  style="width:100%;height: 85px;"></textarea>
+                    <textarea class="input-text" name="print" id="print"  check="require" msg="请说明印图技术" placeholder="请在此说明印图技术，如:2个单色图，或1个彩色图"  style="width:100%;height: 85px;"></textarea>
                 </td>
             </tr>
             <tr style='height:15.7pt'>
@@ -264,7 +272,7 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
                 <td width=165 colspan=4 style='width:123.5pt;border-left:
    none;border-bottom:solid 1.0pt;border-right:solid 1.0pt;
    padding:5.4pt 5.4pt 0cm 5.4pt;height:15.7pt'>
-                    <p><span style='font-size:9.0pt;font-family:宋体'><input class="input-text" type="text" name="front_money" id="front_money" /></span></p>
+                    <p><span style='font-size:9.0pt;font-family:宋体'><input class="input-text" type="text" name="earnest" id="earnest" /></span></p>
                 </td>
             </tr>
             <tr style='height:15.7pt'>
@@ -275,7 +283,12 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
                 </td>
                 <td width=165 colspan=4 style='width:123.5pt;border-left:none;border-bottom:solid 1.0pt;border-right:solid 1.0pt;
    padding:0cm 5.4pt 0cm 5.4pt;height:15.7pt'>
-                    <p><b><span style='font-size:9.0pt;font-family:宋体'>2017-04-23</span></b></p>
+                    <p><b><span style='font-size:9.0pt;font-family:宋体'>
+                          <script>
+                            var datetime = moment().format('YYYY-MM-DD');
+                            document.write(datetime);
+                          </script>
+                    </span></b></p>
                 </td>
             </tr>
             <tr style='height:15.7pt'>
@@ -285,10 +298,10 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
                 </td>
                 <td width=165 colspan=4 style='width:123.5pt;border-bottom:solid 1.0pt;border-right:solid 1.0pt; padding:0cm 5.4pt 0cm 5.4pt;height:15.7pt'>
                     <%--<input data-date-format="yyyy-mm-dd" style="width: 150px" id="ship_time" name="ship_time" readonly="readonly" class="input-date input-text" check="require" msg="发货时间不能为空" >--%>
-                        <input type="text" style="width: 150px" class="input-text" value="" id="dp1">
+                        <input type="text" style="width: 150px" class="input-text" value="" id="deliveryDate" name="deliveryDate">
                         <script>
                             $(function(){
-                                $('#dp1').datepicker({
+                                $('#deliveryDate').datepicker({
                                     format: 'yyyy-mm-dd'
                                 });
                             });
@@ -299,7 +312,7 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
                     <p style='text-align:center'><b><span style='font-size:9.0pt;font-family:宋体'>备注</span></b></p>
                 </td>
                 <td width=383 colspan=3 rowspan=2 style='width:287.1pt;border-bottom:solid 1.0pt;border-right:solid 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.7pt'>
-                    <textarea name="note" id="note" style="width:100%;height: 55px;" class="input-text"></textarea>
+                    <textarea name="remarks" id="remarks" style="width:100%;height: 55px;" class="input-text"></textarea>
                 </td>
             </tr>
             <tr style='height:15.7pt'>
@@ -307,6 +320,7 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
   border-bottom:solid 1.0pt;border-right:solid 1.0pt;
   padding:0cm 5.4pt 0cm 5.4pt;height:15.7pt'>
                     <p style='text-align:center'><b><span style='font-size:9.0pt;font-family:宋体'>接 单 人</span></b></p>
+                    <input type="hidden" id="userId" name="userId" value="${UserEntity.id}">
                 </td>
                 <td width=165 colspan=4 style='width:123.5pt;border-left:
   none;border-bottom:solid 1.0pt;border-right:solid 1.0pt;
@@ -337,7 +351,7 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
                 <td width=79 colspan=2 style='width:59.5pt;
   border-bottom:solid 1.0pt;border-right:solid 1.0pt;
   padding:0cm 5.4pt 0cm 5.4pt;height:27.7pt'>
-                    <select name="ship_method" id="ship_method" class="select">
+                    <select name="way" id="way" class="select">
                         <option value="">选择配送方式</option>
                         <option value="快递">快递</option>
                         <option value="自提">自提</option>
@@ -352,7 +366,7 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
                 <td width=82 colspan=1 style='width:61.35pt;
   border-bottom:solid 1.0pt;border-right:solid 1.0pt;
   padding:0cm 5.4pt 0cm 5.4pt;height:27.7pt'>
-                    <input class="input-text"  type="text" id="ship_person" name="ship_person"  check="require" msg="收件人不能为空">
+                    <input class="input-text"  type="text" id="personName" name="personName"  check="require" msg="收件人不能为空">
                 </td>
 
                 <td width=49 colspan=1 style='width:36.75pt;
@@ -363,7 +377,7 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
                 </td>
                 <td width=110 colspan=1 style='width:82.35pt;border-left:none;border-bottom:solid 1.0pt;border-right:solid 1.5pt;
   padding:0cm 5.4pt 0cm 5.4pt;height:27.7pt'>
-                    <input class="input-text" type="text" id="ship_tel" name="ship_tel">
+                    <input class="input-text" type="text" id="relationPhone" name="relationPhone">
                 </td>
             </tr>
             <tr style='height:27.7pt'>
@@ -388,8 +402,11 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
                 </td>
                 <td width=218 colspan=3 style='width:163.5pt;border-left:none;border-bottom:solid 1.5pt;border-right:solid 1.5pt;
   padding:0cm 5.4pt 0cm 5.4pt;height:27.7pt'>
-                    <input class="input-text" type="text" id="ship_addr" name="ship_addr">
+                    <input class="input-text" type="text" id="address" name="address">
                 </td>
+            </tr>
+            <tr>
+                <td colspan="10" style="border: none;width: 753px;position: absolute;padding-top: 8px;" rowspan="3" align="right"><br><input class="btn btn-sm btn-primary" type="submit" value="新增"></td>
             </tr>
         </table>
     </form>
@@ -453,49 +470,9 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
 <script src="/bootstrap/js/bootstrap-datepicker.js"></script>
 
 <script type="text/javascript">
-    function add() {
-        $("#opmode").val("add");
-        if (check_form("form_data")) {
-            if ($('#ship_time').val() < 1) {
-                ui_error($('#ship_time').attr("msg"));
-                //$(this).focus();
-                check_flag = false;
-                return check_flag;
-            }
+        function add() {
 
-            //如果地址不为空，判断有没选择区县
-            var ship_addr = $('#ship_addr').val();
-            if(ship_addr !='' && ship_addr.indexOf('市') < 0){
-
-                if($('#ship_county').val() == ''){
-                    ui_error($('#ship_county').attr("msg"));
-                    $('#ship_pro').focus();
-                    check_flag = false;
-                    return check_flag;
-                }
-
-            }
-
-            sendForm("form_data", "/order/save", "/order/add");
-        }
-    };
-
-    function getChildList(id, pid) {
-
-        $.ajax({
-            type : "POST",
-            url : "/areas/childs",
-            data : 'parent_id=' + pid,
-            success : function(rs) {
-                $("#" + id).html(rs);
-            }
-        });
-    }
-
-
-    $(document).ready(function() {
-
-    });
+        };
 </script>
 
 

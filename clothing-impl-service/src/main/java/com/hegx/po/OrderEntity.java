@@ -20,14 +20,14 @@ public class OrderEntity extends BaseDto {
     private String qq;
     private String color;
     private String otherFashion;
-    private String money;
-    private String earnest;
-    private String print;
+    private String money;//成交金额
+    private String earnest;//定金
+    private String print;//印制说明
     private Date getOrderDate;
     private Date deliveryDate;
     private String remarks;
     private String way;
-    private String person;
+    private String personName;
     private String relationPhone;
     private String address;
     private Date createDate;
@@ -173,12 +173,12 @@ public class OrderEntity extends BaseDto {
         this.way = way;
     }
 
-    public String getPerson() {
-        return person;
+    public String getPersonName() {
+        return personName;
     }
 
-    public void setPerson(String person) {
-        this.person = person;
+    public void setPersonName(String personName) {
+        this.personName = personName;
     }
 
     public String getRelationPhone() {

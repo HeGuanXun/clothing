@@ -3,8 +3,8 @@ package com.hegx.controller;
 
 import com.hegx.dto.FashionDto;
 import com.hegx.po.Fashion;
+
 import com.hegx.service.FashionService;
-import javafx.scene.input.DataFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,10 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -28,7 +26,6 @@ public class FashionController {
 
     @Autowired
    private FashionService fashionService;
-
     @RequestMapping(value = "getAll")
     public ModelAndView getAll()
     {
@@ -94,6 +91,5 @@ public class FashionController {
         fashionDto.setMessage("success");
         return  fashionDto;
     }
-
 
 }

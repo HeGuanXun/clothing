@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.hegx.dao.FashionDao">
+<mapper namespace="com.hegx.dao.CodeDao">
 
 	<!--仪器级别表 ，下面引用，方便修改表名 -->
 	<sql id="t_code"> t_code </sql>
@@ -38,7 +38,6 @@
 		INSERT INTO
 		<include refid="t_code" />
 		(
-		id,
 		mxs,
 		ms,
 		mm,

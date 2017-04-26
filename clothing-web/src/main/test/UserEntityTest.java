@@ -46,6 +46,7 @@ public class UserEntityTest {
 		List<UserEntityDto> userEntities =	userService.getAll();
 		for(UserEntityDto userEntity:userEntities)
 		{
+			System.out.println(userEntity.getUserName());
 		}
 	}
 

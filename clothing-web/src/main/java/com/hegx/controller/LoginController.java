@@ -43,7 +43,7 @@ public class LoginController {
 			return new  ModelAndView("login");
 		}
 		//验证该用户名跟密码是否已经存在
-		UserEntityDto	orgUserEntityDto =	userService.checkUser(userEntityDto);
+		UserEntityDto	orgUserEntityDto =	userService.checkLogin(userEntityDto);
 		if(orgUserEntityDto!=null)
 		{
 			session.setAttribute("success", "success");

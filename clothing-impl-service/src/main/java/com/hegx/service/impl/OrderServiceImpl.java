@@ -21,4 +21,10 @@ public class OrderServiceImpl extends BaseServiceImpl<OrderEntity> implements Or
     protected BaseDao<OrderEntity> getBaseDao() {
         return this.orderDao;
     }
+
+
+    @Override
+    public OrderEntity getByOrderId(Long id) {
+        return orderDao.getByOrderId(id);
+    }
 }

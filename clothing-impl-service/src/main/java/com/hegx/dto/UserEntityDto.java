@@ -2,6 +2,8 @@ package com.hegx.dto;
 
 
 
+import com.hegx.po.UserEntity;
+
 import java.io.Serializable;
 import java.util.Date;
 

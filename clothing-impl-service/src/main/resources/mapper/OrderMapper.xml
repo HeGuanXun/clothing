@@ -11,7 +11,9 @@
 		SELECT
 		  orderId,
 		  fashionId,
-		  codeId,,
+		  codeId,
+		  userId,
+		  customName,
 		  className,
 		  phoneNumber,
 		  qq,
@@ -24,7 +26,7 @@
 		  deliveryDate,
 		  remarks,
 		  way,
-		  person,
+		  personName,
 		  relationPhone,
 		  address,
 		  createDate,
@@ -36,39 +38,43 @@
 		]]>
 	</sql>
 
-	<resultMap id="BeanMap" type="com.hegx.dao.OrderDao">
-		<id column="orderId" property="orderId" jdbcType="BIGINT" />
-		<result column="fashionId" property="fashionId" />
-		<result column="codeId" property="codeId" />
-		<result column="className" property="className" />
-		<result column="phoneNumber" property="phoneNumber" />
-		<result column="qq" property="qq" />
-		<result column="color" property="color" />
-		<result column="otherFashion" property="otherFashion" />
-		<result column="money" property="money" />
-		<result column="earnest" property="earnest" />
-		<result column="print" property="print" />
-		<result column="getOrderDate" property="getOrderDate" />
-		<result column="deliveryDate" property="deliveryDate" />
-		<result column="remarks" property="remarks" />
-		<result column="way" property="way" />
-		<result column="person" property="person" />
-		<result column="relationPhone" property="relationPhone" />
-		<result column="address" property="address" />
-		<result column="createDate" property="createDate" />
-		<result column="endReason" property="endReason" />
-		<result column="belong" property="belong" />
-		<result column="status" property="status" />
-		<result column="orderNumber" property="orderNumber" />
+	<resultMap id="BeanMap" type="com.hegx.po.OrderEntity">
+		<id column="orderId" property="orderId"  jdbcType="INTEGER"/>
+		<result column="fashionId" property="fashionId" jdbcType="INTEGER"/>
+		<result column="codeId" property="codeId" jdbcType="INTEGER"/>
+		<result column="userId" property="userId" jdbcType="INTEGER"/>
+		<result column="className" property="className" jdbcType="VARCHAR" />
+		<result column="customName" property="customName" jdbcType="VARCHAR" />
+		<result column="phoneNumber" property="phoneNumber" jdbcType="VARCHAR"/>
+		<result column="qq" property="qq" jdbcType="VARCHAR" />
+		<result column="color" property="color" jdbcType="VARCHAR"  />
+		<result column="otherFashion" property="otherFashion" jdbcType="VARCHAR"/>
+		<result column="money" property="money" jdbcType="VARCHAR"/>
+		<result column="earnest" property="earnest" jdbcType="VARCHAR"/>
+		<result column="print" property="print" jdbcType="VARCHAR" />
+		<result column="getOrderDate" property="getOrderDate" jdbcType="DATE" />
+		<result column="deliveryDate" property="deliveryDate" jdbcType="DATE" />
+		<result column="remarks" property="remarks" jdbcType="VARCHAR" />
+		<result column="way" property="way" jdbcType="VARCHAR"/>
+		<result column="personName" property="personName" jdbcType="VARCHAR" />
+		<result column="relationPhone" property="relationPhone" jdbcType="VARCHAR" />
+		<result column="address" property="address" jdbcType="VARCHAR" />
+		<result column="createDate" property="createDate" jdbcType="DATE" />
+		<result column="endReason" property="endReason" jdbcType="VARCHAR" />
+		<result column="belong" property="belong" jdbcType="VARCHAR"/>
+		<result column="status" property="status" jdbcType="DATE"/>
+		<result column="orderNumber" property="orderNumber" jdbcType="VARCHAR"/>
 	</resultMap>
 
 	<!-- 新增 -->
-	<insert id="insert" parameterType="com.hegx.dao.OrderDao">
+	<insert id="insert">
 		INSERT INTO
 		<include refid="t_order" />
 		(
 		fashionId,
-		codeId,,
+		codeId,
+		userId,
+		customName,
 		className,
 		phoneNumber,
 		qq,
@@ -81,7 +87,7 @@
 		deliveryDate,
 		remarks,
 		way,
-		person,
+		personName,
 		relationPhone,
 		address,
 		createDate,
@@ -93,6 +99,8 @@
 		) VALUES (
 		#{fashionId},
 		#{codeId},
+		#{userId},
+		#{customName},
 		#{className},
 		#{phoneNumber},
 		#{qq},
@@ -105,7 +113,7 @@
 		#{deliveryDate},
 		#{remarks},
 		#{way},
-		#{person},
+		#{personName},
 		#{relationPhone},
 		#{address},
 		#{createDate},
@@ -118,27 +126,97 @@
 	</insert>
 
 	<!-- 更新 -->
-	<update id="update" parameterType="com.hegx.dao.OrderDao">
+	<update id="update">
 		UPDATE
 		<include refid="t_order" />
 		<set>
-			<if test="fashionName != null">
-				fashionName = #{fashionName,jdbcType=VARCHAR}
+			<if test="fashionId != null">
+				fashionId = #{fashionId},
 			</if>
+			<if test="codeId != null">
+				codeId = #{codeId},
+			</if>
+			<if test="userId != null">
+				userId = #{userId},
+			</if>
+			<if test="customName != null">
+				customName = #{customName},
+			</if>
+			<if test="className != null">
+				className = #{className},
+			</if>
+			<if test="phoneNumber != null">
+				phoneNumber = #{phoneNumber},
+			</if>
+			<if test="qq != null">
+				qq = #{qq},
+			</if>
+			<if test="color != null">
+				color = #{color},
+			</if>
+			<if test="otherFashion != null">
+				otherFashion = #{otherFashion},
+			</if>
+			<if test="money != null">
+				money = #{money},
+			</if>
+			<if test="earnest != null">
+				earnest = #{earnest},
+			</if>
+			<if test="print != null">
+				print = #{print},
+			</if>
+			<if test="deliveryDate != null">
+				deliveryDate = #{deliveryDate},
+			</if>
+			<if test="remarks != null">
+				remarks = #{remarks},
+			</if>
+			<if test="way != null">
+				way = #{way},
+			</if>
+			<if test="personName != null">
+				personName = #{personName},
+			</if>
+			<if test="relationPhone != null">
+				relationPhone = #{relationPhone},
+			</if>
+			<if test="address != null">
+				address = #{address},
+			</if>
+			<if test="createDate != null">
+				createDate = #{createDate},
+			</if>
+			<if test="endReason != null">
+				endReason = #{endReason},
+			</if>
+			<if test="endDate != null">
+				endDate = #{endDate},
+			</if>
+			<if test="belong != null">
+				belong = #{belong},
+			</if>
+			<if test="status != null">
+				status = #{status},
+			</if>
+			<if test="orderNumber != null">
+				orderNumber = #{orderNumber}
+			</if>
+
 		</set>
-		WHERE id = #{id,jdbcType=INTEGER}
+		WHERE orderId = #{orderId}
 	</update>
 
 
 	<!--真删除 -->
-	<delete id="deleteById" parameterType="Integer">
+	<delete id="deleteById" parameterType="Long">
 		DELETE FROM
 		<include refid="t_order" />
-		WHERE id = #{id,jdbcType=INTEGER}
+		WHERE orderId = #{orderId,jdbcType=INTEGER}
 	</delete>
 
 	<!-- 根据id查询 -->
-	<select id="getById" parameterType="Integer" resultMap="BeanMap">
+	<select id="getByOrderId" parameterType="Long" resultMap="BeanMap">
 		<include refid="selectFieldSQL" />
 		FROM
 		<include refid="t_order" />
@@ -154,18 +232,7 @@
 		FROM
 		<include refid="t_order" />
 	</select>
-
-	<!--根据名字来查询该数据是否已经存在库中-->
-	<select id="getByFashionName" resultMap="BeanMap" parameterType="com.hegx.dao.OrderDao">
-
-		<include refid="selectFieldSQL" />
-		FROM
-		<include refid="t_order" />
-		<![CDATA[
-		 WHERE fashionName = #{fashionName,jdbcType=VARCHAR}
-		]]>
-
-	</select>
+	
 
 
 </mapper>

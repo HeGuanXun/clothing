@@ -2,8 +2,6 @@ package com.hegx.controller;
 
 import com.hegx.controller.util.Permission;
 import com.hegx.dto.UserEntityDto;
-import com.hegx.po.Fashion;
-import com.hegx.service.FashionService;
 import com.hegx.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
