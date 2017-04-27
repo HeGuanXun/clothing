@@ -23,7 +23,7 @@
 		  earnest,
 		  print,
 		  getOrderDate,
-		  deliveryDate,
+		  sendDate,
 		  remarks,
 		  way,
 		  personName,
@@ -53,7 +53,7 @@
 		<result column="earnest" property="earnest" jdbcType="VARCHAR"/>
 		<result column="print" property="print" jdbcType="VARCHAR" />
 		<result column="getOrderDate" property="getOrderDate" jdbcType="DATE" />
-		<result column="deliveryDate" property="deliveryDate" jdbcType="DATE" />
+		<result column="sendDate" property="sendDate" jdbcType="DATE" />
 		<result column="remarks" property="remarks" jdbcType="VARCHAR" />
 		<result column="way" property="way" jdbcType="VARCHAR"/>
 		<result column="personName" property="personName" jdbcType="VARCHAR" />
@@ -84,7 +84,7 @@
 		earnest,
 		print,
 		getOrderDate,
-		deliveryDate,
+		sendDate,
 		remarks,
 		way,
 		personName,
@@ -110,7 +110,7 @@
 		#{earnest},
 		#{print},
 		#{getOrderDate},
-		#{deliveryDate},
+		#{sendDate},
 		#{remarks},
 		#{way},
 		#{personName},
@@ -166,8 +166,8 @@
 			<if test="print != null">
 				print = #{print},
 			</if>
-			<if test="deliveryDate != null">
-				deliveryDate = #{deliveryDate},
+			<if test="sendDate != null">
+				sendDate = #{sendDate},
 			</if>
 			<if test="remarks != null">
 				remarks = #{remarks},

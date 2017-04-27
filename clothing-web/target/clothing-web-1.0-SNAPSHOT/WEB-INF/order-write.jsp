@@ -58,16 +58,18 @@
             </div>
         </div>--%>
         <table id="addorder" border=1 cellspacing=0 cellpadding=0 style='border-collapse:collapse;border:none;background-color: #EEEEEE'>
+
             <tr style='height:47.0pt'>
                 <td colspan="15" style="border: none;width: 753px;position: absolute;padding-top: 8px;">
                     <span style='font-weight:bold; font-size:22.0pt;font-family:宋体'>企业班服内部流程订单</span>
                     <span style='font-size:12.0pt;font-family:宋体;color:red'>【
-                        <select name="area" id="area" check="require" msg="地区不能为空">
+                        <select  check="require" msg="地区不能为空">
 			<option value="">请选择</option>
 			<option value='总部' >总部</option><option value='客服部' >客服部</option><option value='设计公司' >设计公司</option><option value='财务部' >财务部</option><option value='产品公司' >产品公司</option><option value='阿凡达电商' >阿凡达电商</option><option value='设计公司兼职' >设计公司兼职</option><option value='招商部陈康俊' >招商部陈康俊</option><option value='招商部谭磊' >招商部谭磊</option><option value='招商部' >招商部</option><option value='招商部程鹏' >招商部程鹏</option><option value='招商部谢文博' >招商部谢文博</option><option value='江西分公司A' >江西分公司A</option><option value='江西分公司B' >江西分公司B</option><option value='江西分公司C' >江西分公司C</option><option value='江西分公司D' >江西分公司D</option><option value='江西分公司E' >江西分公司E</option><option value='招商部韩进' >招商部韩进</option><option value='招商部杨兴' selected>招商部杨兴</option><option value='招商部杨晨' >招商部杨晨</option>		</select>】</span>
                     <span style='font-family:宋体'>生产编号：</span>
                 </td>
             </tr>
+
             <tr style='height:13.1pt'>
                 <td  rowspan=2 style='width:45px;border-top:solid 1.5pt;border-left:solid 1.5pt;  border-bottom:solid 1.0pt;border-right:solid 1.0pt;  padding:0cm 5.4pt 0cm 5.4pt;height:13.1pt'>
                     <p style='text-align:center;width: 120px'><b><span style='font-size:9.0pt;font-family:宋体'>客户名称</span></b></p>
@@ -99,6 +101,9 @@
                     <input class="input-text" type="text" id="phoneNumber" name="phoneNumber" check="number" msg="客户电话只能是数字">
                 </td>
             </tr>
+
+
+
             <tr style='height:13.1pt'>
                 <td width=39 style='width:28.9pt;
   border-bottom:solid 1.0pt;border-right:solid 1.0pt;
@@ -114,14 +119,15 @@
                 </td>
             </tr>
 
+
+
+
             <tr style='height:26.95pt'>
                 <td width=73 style='width:45px;border-left:solid 1.5pt;
   border-bottom:solid 1.0pt;border-right:solid 1.0pt;
   padding:0cm 5.4pt 0cm 5.4pt;height:26.95pt'>
                     <p style='text-align:center'><b><span style='font-size:9.0pt;font-family:宋体'>选定款式</span></b></p>
                 </td>
-
-
             <td width=462 colspan=2 style='width:200px;border-left:none;border-bottom:solid 1.0pt;border-right:none;
   padding:0cm 5.4pt 0cm 5.4pt;height:26.95pt'>
                 <select name="style" id="style"  check="require" msg="请选择款式" class="select">
@@ -131,8 +137,6 @@
                     </c:forEach>
                 </select>
             </td>
-
-
                 <td width=462 colspan="1" style='width:150px;border-left:none;border-bottom:solid 1.0pt;border-right:none; padding:0cm 5.4pt 0cm 5.4pt;height:26.95pt'>
                     <select name="color" id="color" class="select">
                         <option value="">请选择颜色</option>
@@ -151,6 +155,10 @@
                         <input class="input-text" type="text" name="otherFashion" id="otherFashion" placeholder="若无选定款式无符合条件记录，在此填写"  /></span></p>
                 </td>
             </tr>
+
+
+
+
 
          <tr style='height:26.9pt'>
              <td width=73 style='width:55.1pt;border-left:solid 1.5pt;
@@ -176,6 +184,9 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
  </span></p>
              </td>
          </tr>
+
+
+
             <tr style='height:30.7pt'>
                 <td width=73 rowspan=2 style='width:45px;border-left:solid 1.5pt; border-bottom:solid 1.0pt;border-right:solid 1.0pt;height:8.7pt'>
                     <p style='text-align:center'><b><span style='font-size:9.0pt;font-family:宋体'>码号</span></b></p>
@@ -215,6 +226,8 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
                 </td>
             </tr>
 
+
+
             <tr id="size" style='height:15.75pt'>
                 <td width=36 style='width:32pt;border:solid 1.0pt;height:15.75pt;text-align: center'>
                     <input style="text-align: center" type="number" name="mxs" id="mxs" check="positive" msg="数量只能为正数" />
@@ -242,6 +255,9 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
                     <span id="totalCount" name="totalCount"></span>
                 </td>
             </tr>
+
+
+
             <tr style='height:15.7pt'>
                 <td width=36 colspan=1 style='width:32pt;border-left:solid 1.5pt;
    border-bottom:solid 1.0pt;border-right:solid 1.0pt;
@@ -263,6 +279,8 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
                     <textarea class="input-text" name="print" id="print"  check="require" msg="请说明印图技术" placeholder="请在此说明印图技术，如:2个单色图，或1个彩色图"  style="width:100%;height: 85px;"></textarea>
                 </td>
             </tr>
+
+
             <tr style='height:15.7pt'>
                 <td width=73 style='width:45px;border-left:solid 1.5pt;
    border-bottom:solid 1.0pt;border-right:solid 1.0pt;
@@ -291,6 +309,9 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
                     </span></b></p>
                 </td>
             </tr>
+
+
+
             <tr style='height:15.7pt'>
                 <td width=73 style='width:45px;border-left:solid 1.5pt;border-bottom:solid 1.0pt;border-right:solid 1.0pt;height:15.7pt'>
                     <p style='text-align:center'><b><span style='font-size:9.0pt;font-family:宋体'>发货日期</span></b></p>
@@ -298,10 +319,10 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
                 </td>
                 <td width=165 colspan=4 style='width:123.5pt;border-bottom:solid 1.0pt;border-right:solid 1.0pt; padding:0cm 5.4pt 0cm 5.4pt;height:15.7pt'>
                     <%--<input data-date-format="yyyy-mm-dd" style="width: 150px" id="ship_time" name="ship_time" readonly="readonly" class="input-date input-text" check="require" msg="发货时间不能为空" >--%>
-                        <input type="text" style="width: 150px" class="input-text" value="" id="deliveryDate" name="deliveryDate">
-                        <script>
+                        <input type="text" style="width: 150px" class="input-text" value="" id="sendDate" name="sent_">
+                        <script type="text/javascript">
                             $(function(){
-                                $('#deliveryDate').datepicker({
+                            $('#sendDate').datepicker({
                                     format: 'yyyy-mm-dd'
                                 });
                             });
@@ -315,6 +336,9 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
                     <textarea name="remarks" id="remarks" style="width:100%;height: 55px;" class="input-text"></textarea>
                 </td>
             </tr>
+
+
+
             <tr style='height:15.7pt'>
                 <td width=73 style='width:45px;border-left:solid 1.5pt;
   border-bottom:solid 1.0pt;border-right:solid 1.0pt;
@@ -335,6 +359,9 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
                     <p style='text-align:center'><b><span style='font-size:9.0pt;font-family:宋体'>设计样稿（设计师：何冠勋）</span></b></p>
                 </td>
             </tr>
+
+
+
             <tr style='height:26.95pt'>
                 <td width=733 colspan=10 style='width:549.45pt;border-left:solid 1.5pt;border-bottom:solid 1.0pt;border-right:solid 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;height:26.95pt'>
                     <p style='text-align:center'><b><span
@@ -380,6 +407,11 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
                     <input class="input-text" type="text" id="relationPhone" name="relationPhone">
                 </td>
             </tr>
+
+
+
+
+
             <tr style='height:27.7pt'>
                 <td width=46 colspan=1 style='width:34.65pt;
   border-bottom:solid 1.5pt;border-right:solid 1.0pt;border-left:solid 1.5pt;
@@ -405,9 +437,13 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
                     <input class="input-text" type="text" id="address" name="address">
                 </td>
             </tr>
+
+
             <tr>
                 <td colspan="10" style="border: none;width: 753px;position: absolute;padding-top: 8px;" rowspan="3" align="right"><br><input class="btn btn-sm btn-primary" type="submit" value="新增"></td>
             </tr>
+
+
         </table>
     </form>
 </div>

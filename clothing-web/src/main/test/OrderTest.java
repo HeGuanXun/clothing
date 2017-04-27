@@ -80,7 +80,7 @@ public class OrderTest {
         orderEntity.setCodeId(1);
         orderEntity.setCreateDate(new Date());
         orderEntity.setColor("红色");
-        orderEntity.setDeliveryDate(new Date());
+        orderEntity.setEndDate(new Date());
         orderEntity.setEarnest("500");
         orderEntity.setQq("751762100");
         orderEntity.setEndDate(new Date());

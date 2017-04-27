@@ -24,7 +24,7 @@ public class OrderEntity extends BaseDto {
     private String earnest;//定金
     private String print;//印制说明
     private Date getOrderDate;
-    private Date deliveryDate;
+    private Date sendDate;
     private String remarks;
     private String way;
     private String personName;
@@ -149,12 +149,12 @@ public class OrderEntity extends BaseDto {
         this.getOrderDate = getOrderDate;
     }
 
-    public Date getDeliveryDate() {
-        return deliveryDate;
+    public Date getSendDate() {
+        return sendDate;
     }
 
-    public void setDeliveryDate(Date deliveryDate) {
-        this.deliveryDate = deliveryDate;
+    public void setSendDate(Date sendDate) {
+        this.sendDate = sendDate;
     }
 
     public String getRemarks() {

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -29,7 +30,7 @@ public class OrderController  {
 
 
     @RequestMapping(value = "doAdd",method = {RequestMethod.POST})
-    private ModelAndView doAdd(OrderEntityDto orderEntityDto)
+    private ModelAndView doAdd(OrderEntityDto orderEntityDto, Date sent)
     {
         userService.getById(orderEntityDto.getUserId());
         return new ModelAndView("order-list");
