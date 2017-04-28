@@ -20,4 +20,41 @@ public class CodeServiceImpl extends BaseServiceImpl<Code> implements CodeServic
     protected BaseDao<Code> getBaseDao() {
         return this.codeDao;
     }
+
+    @Override
+    public Integer doTotalcount(Code code) {
+
+        Integer totalCount = 0;
+
+        if (code.getMl()!=null)
+        {
+            totalCount+=code.getMl();
+        }
+        if (code.getMxxxl()!=null)
+        {
+            totalCount+=code.getMxxxl();
+        }
+        if (code.getMxxl()!=null)
+        {
+            totalCount+=code.getMxxl();
+        }
+        if (code.getMxs()!=null)
+        {
+            totalCount+=code.getMxs();
+        }
+        if (code.getMm()!=null)
+        {
+            totalCount+=code.getMm();
+        }
+        if (code.getMs()!=null)
+        {
+            totalCount+=code.getMs();
+        }
+        if (code.getMxl()!=null)
+        {
+            totalCount+=code.getMxl();
+        }
+
+        return totalCount;
+    }
 }

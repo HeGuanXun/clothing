@@ -1,6 +1,7 @@
 package com.hegx.po;
 
 import com.hegx.base.dto.BaseDto;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -24,6 +25,8 @@ public class OrderEntity extends BaseDto {
     private String earnest;//定金
     private String print;//印制说明
     private Date getOrderDate;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date sendDate;
     private String remarks;
     private String way;

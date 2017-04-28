@@ -1,5 +1,7 @@
 package com.hegx.base.service;
 
+import com.hegx.po.Code;
+
 import java.util.List;
 
 
@@ -24,4 +26,5 @@ public interface BaseService<T> {
 
 	//查询全部信息
 	public List<T> getAll();
+
 }

@@ -68,6 +68,9 @@
 
 	<!-- 新增 -->
 	<insert id="insert">
+
+
+
 		INSERT INTO
 		<include refid="t_order" />
 		(

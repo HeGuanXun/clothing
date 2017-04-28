@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -46,11 +47,13 @@ public class LoginController {
 		UserEntityDto	orgUserEntityDto =	userService.checkLogin(userEntityDto);
 		if(orgUserEntityDto!=null)
 		{
+			session.setAttribute("userId",orgUserEntityDto.getId());
 			session.setAttribute("success", "success");
 			ModelAndView modelAndView = new ModelAndView("index");
 			modelAndView.addObject(orgUserEntityDto);
 			return  modelAndView;
 		}
+
 		userEntityDto.setMessage("error");
 		return new  ModelAndView("login");
 	}
@@ -83,8 +86,9 @@ public class LoginController {
 	}
 
 	@RequestMapping(value = "/login", method = {RequestMethod.GET})
-	public ModelAndView login() throws Exception
+	public ModelAndView login(HttpServletRequest request) throws Exception
 	{
+		request.getSession().setAttribute("checkCode","checkCode");
 		return new ModelAndView("login");
 	}
 

@@ -27,6 +27,7 @@ E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\service\FashionServ
 E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\dao\OrderDao.java
 E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\base\dao\BaseDao.java
 E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\constants\ExceptionConstants.java
+E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\fiter\AuthitorFilter.java
 E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\service\impl\FashionServiceImpl.java
 E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\base\dto\BaseDto.java
 E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\base\service\impl\BaseServiceImpl.java

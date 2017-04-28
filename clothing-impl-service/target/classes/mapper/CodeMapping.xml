@@ -35,6 +35,13 @@
 
 	<!-- 新增 -->
 	<insert id="insert" parameterType="com.hegx.po.Code">
+
+		<selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+
+			SELECT LAST_INSERT_ID() AS id
+
+		</selectKey>
+
 		INSERT INTO
 		<include refid="t_code" />
 		(

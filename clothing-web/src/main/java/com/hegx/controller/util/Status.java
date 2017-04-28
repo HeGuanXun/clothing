@@ -11,5 +11,4 @@ public final class Status {
     public static final short examine = 3;//订单审批
     public static final short account = 4;//订单打款
     public static final short product = 5;//生产订单
-
 }

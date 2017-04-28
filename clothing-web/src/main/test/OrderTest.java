@@ -1,6 +1,7 @@
 
 import com.hegx.controller.util.Permission;
 import com.hegx.controller.util.Status;
+import com.hegx.dto.OrderEntityDto;
 import com.hegx.po.Code;
 import com.hegx.po.OrderEntity;
 import com.hegx.service.CodeService;
@@ -34,12 +35,11 @@ public class OrderTest {
 
     private LocalDate localDate = LocalDate.now();
 
-
     @Test
     public void getAll()
     {
-     List<OrderEntity> list = orderService.getAll();
-    if (!CollectionUtils.isEmpty(list))
+         List<OrderEntityDto> list = orderService.getAll();
+        if (!CollectionUtils.isEmpty(list))
         {
             for (OrderEntity orderEntity:list)
             {
@@ -59,7 +59,7 @@ public class OrderTest {
     public void  insert()
     {
 
-        OrderEntity orderEntity  = new OrderEntity();
+        OrderEntityDto orderEntity  = new OrderEntityDto();
         Code code = new Code();
         code.setMxl(20);
         code.setMs(25);
@@ -104,12 +104,12 @@ public class OrderTest {
     @Test
     public  void  update()
     {
-        OrderEntity orderEntity  = new OrderEntity();
+        OrderEntityDto orderEntity  = new OrderEntityDto();
         orderEntity.setAddress("江西省南昌市上海路");
        orderEntity.setBelong("江西省上饶市临川一中");
          orderEntity.setCustomName("符亚敏");
         orderEntity.setOrderId(Long.valueOf(6));
-        orderService.update(orderEntity);
+        //orderService.update(orderEntity);
     }
 
 

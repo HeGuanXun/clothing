@@ -13,8 +13,8 @@
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
       <module name="clothing-imp-root" target="1.8" />
-      <module name="clothing-impl-integration" target="1.8" />
-      <module name="clothing-impl-service" target="1.8" />
+      <module name="clothing-impl-integration" target="1.5" />
+      <module name="clothing-impl-service" target="1.6" />
       <module name="clothing-web" target="1.8" />
     </bytecodeTargetLevel>
   </component>

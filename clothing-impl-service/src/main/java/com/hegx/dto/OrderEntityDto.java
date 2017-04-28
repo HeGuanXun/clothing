@@ -1,5 +1,6 @@
 package com.hegx.dto;
 
+import com.hegx.po.Code;
 import com.hegx.po.OrderEntity;
 
 /**
@@ -70,4 +71,5 @@ public class OrderEntityDto extends OrderEntity {
     public void setSchool(String school) {
         this.school = school;
     }
+
 }

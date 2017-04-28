@@ -130,10 +130,10 @@
                 </td>
             <td width=462 colspan=2 style='width:200px;border-left:none;border-bottom:solid 1.0pt;border-right:none;
   padding:0cm 5.4pt 0cm 5.4pt;height:26.95pt'>
-                <select name="style" id="style"  check="require" msg="请选择款式" class="select">
+                <select name="fashionId" id="style"  check="require" msg="请选择款式" class="select">
                     <option value="">选择款式</option>
                     <c:forEach items="${list}" var="fashion" varStatus="i">
-                    <option value="${fashion.fashionName}">${fashion.fashionName}</option>
+                    <option value="${fashion.id}">${fashion.fashionName}</option>
                     </c:forEach>
                 </select>
             </td>
@@ -319,7 +319,7 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
                 </td>
                 <td width=165 colspan=4 style='width:123.5pt;border-bottom:solid 1.0pt;border-right:solid 1.0pt; padding:0cm 5.4pt 0cm 5.4pt;height:15.7pt'>
                     <%--<input data-date-format="yyyy-mm-dd" style="width: 150px" id="ship_time" name="ship_time" readonly="readonly" class="input-date input-text" check="require" msg="发货时间不能为空" >--%>
-                        <input type="text" style="width: 150px" class="input-text" value="" id="sendDate" name="sent_">
+                        <input type="text" style="width: 150px" class="input-text" value="" id="sendDate" name="sendDate">
                         <script type="text/javascript">
                             $(function(){
                             $('#sendDate').datepicker({
@@ -344,7 +344,7 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
   border-bottom:solid 1.0pt;border-right:solid 1.0pt;
   padding:0cm 5.4pt 0cm 5.4pt;height:15.7pt'>
                     <p style='text-align:center'><b><span style='font-size:9.0pt;font-family:宋体'>接 单 人</span></b></p>
-                    <input type="hidden" id="userId" name="userId" value="${UserEntity.id}">
+                    <input type="hidden" id="userId" name="userId" value="${sessionScope.userId}">
                 </td>
                 <td width=165 colspan=4 style='width:123.5pt;border-left:
   none;border-bottom:solid 1.0pt;border-right:solid 1.0pt;
@@ -440,7 +440,7 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
 
 
             <tr>
-                <td colspan="10" style="border: none;width: 753px;position: absolute;padding-top: 8px;" rowspan="3" align="right"><br><input class="btn btn-sm btn-primary" type="submit" value="新增"></td>
+                <td colspan="10" style="border: none;width: 753px;position: absolute;padding-top: 8px;" rowspan="3" align="right"><br><input class="btn btn-sm btn-primary" type="submit" onclick="return submit1()" value="新增"></td>
             </tr>
 
 
@@ -483,6 +483,18 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
 <script src="/Public/js/bootbox.min.js"></script>
 
 <script type="text/javascript">
+
+    function submit1(){
+        if(window.confirm('你确定要审核通过吗？')){
+            //alert("确定");
+            return true;
+        }else{
+            //alert("取消");
+            return false;
+        }
+    }
+
+
     $(document).ready(function() {
         $('.input-date').datepicker({
             language:"zh-CN",

@@ -9,5 +9,9 @@ import java.util.List;
  * Created by hegx on 2017/4/24.
  */
 public interface CodeService extends BaseService<Code> {
-
+    /**
+     * 计算总数
+     *
+     * */
+    public Integer doTotalcount(Code code);
 }

@@ -34,7 +34,7 @@ public class IndexController {
         return modelAndView;
     }
 
-    @RequestMapping(value ="/index",method = {RequestMethod.POST})
+    @RequestMapping(value ="/index",method = {RequestMethod.POST,RequestMethod.GET})
     @ResponseBody
     private UserEntityDto indexAdmin(UserEntityDto userEntityDto)
     {
