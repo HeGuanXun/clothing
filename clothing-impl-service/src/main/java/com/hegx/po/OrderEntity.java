@@ -20,7 +20,7 @@ public class OrderEntity extends BaseDto {
     private String phoneNumber;
     private String qq;
     private String color;
-    private String otherFashion;
+    private String otherFashion;//其他款式
     private String money;//成交金额
     private String earnest;//定金
     private String print;//印制说明

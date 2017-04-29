@@ -49,7 +49,7 @@
     <h3 style="color: blue">&nbsp;&nbsp;&nbsp;&nbsp;添加订单</h3>
 
 <div class="col-xs-12">
-    <form  method="post" action="order/doAdd">
+    <form  method="post" action="order/doAddOrder">
       <%--  <div class="operate panel panel-default">
             <div class="panel-body">
                 <div class="pull-right" align="right">
@@ -65,7 +65,7 @@
                     <span style='font-size:12.0pt;font-family:宋体;color:red'>【
                         <select  check="require" msg="地区不能为空">
 			<option value="">请选择</option>
-			<option value='总部' >总部</option><option value='客服部' >客服部</option><option value='设计公司' >设计公司</option><option value='财务部' >财务部</option><option value='产品公司' >产品公司</option><option value='阿凡达电商' >阿凡达电商</option><option value='设计公司兼职' >设计公司兼职</option><option value='招商部陈康俊' >招商部陈康俊</option><option value='招商部谭磊' >招商部谭磊</option><option value='招商部' >招商部</option><option value='招商部程鹏' >招商部程鹏</option><option value='招商部谢文博' >招商部谢文博</option><option value='江西分公司A' >江西分公司A</option><option value='江西分公司B' >江西分公司B</option><option value='江西分公司C' >江西分公司C</option><option value='江西分公司D' >江西分公司D</option><option value='江西分公司E' >江西分公司E</option><option value='招商部韩进' >招商部韩进</option><option value='招商部杨兴' selected>招商部杨兴</option><option value='招商部杨晨' >招商部杨晨</option>		</select>】</span>
+			<option selected="selected" value='总部' >总部</option><option value='客服部' >客服部</option><option value='设计公司' >设计公司</option><option value='财务部' >财务部</option><option value='产品公司' >产品公司</option><option value='阿凡达电商' >阿凡达电商</option><option value='设计公司兼职' >设计公司兼职</option><option value='招商部陈康俊' >招商部陈康俊</option><option value='招商部谭磊' >招商部谭磊</option><option value='招商部' >招商部</option><option value='招商部程鹏' >招商部程鹏</option><option value='招商部谢文博' >招商部谢文博</option><option value='江西分公司A' >江西分公司A</option><option value='江西分公司B' >江西分公司B</option><option value='江西分公司C' >江西分公司C</option><option value='江西分公司D' >江西分公司D</option><option value='江西分公司E' >江西分公司E</option><option value='招商部韩进' >招商部韩进</option><option value='招商部何冠勋'>招商部何冠勋</option><option value='招商部杨晨' >招商部杨晨</option>		</select>】</span>
                     <span style='font-family:宋体'>生产编号：</span>
                 </td>
             </tr>

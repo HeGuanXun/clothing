@@ -15,6 +15,7 @@ public class OrderEntityDto extends OrderEntity {
     private String ss_city;
     private String ss_county;
     private String school;
+    private String showStatus;
 
     public String getS_province() {
         return s_province;
@@ -72,4 +73,11 @@ public class OrderEntityDto extends OrderEntity {
         this.school = school;
     }
 
+    public String getShowStatus() {
+        return showStatus;
+    }
+
+    public void setShowStatus(String showStatus) {
+        this.showStatus = showStatus;
+    }
 }

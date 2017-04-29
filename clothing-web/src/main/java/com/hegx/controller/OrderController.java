@@ -36,9 +36,9 @@ public class OrderController  {
     @Autowired
     private CodeService codeService;
 
-
-    @RequestMapping(value = "doAdd",method = {RequestMethod.POST})
-    private ModelAndView doAdd(OrderEntityDto orderEntityDto, Code code)
+    /**新增订单**/
+    @RequestMapping(value = "doAddOrder",method = {RequestMethod.POST})
+    private ModelAndView doAddOrder(OrderEntityDto orderEntityDto, Code code)
     {
 
         StringBuffer belong = new StringBuffer();
@@ -61,8 +61,8 @@ public class OrderController  {
 
         StringBuffer orderNumber = new StringBuffer();
         SimpleDateFormat format = new SimpleDateFormat("yyyyMMddhhmmss");
-        String newdate =format.format(new Date());
-        orderNumber.append(newdate);
+        String newDate =format.format(new Date());
+        orderNumber.append(newDate);
         orderEntityDto.setOrderNumber(orderNumber.toString());//设置订单编号
 
         code.setTotalCount(codeService.doTotalcount(code));//设置尺码总数
@@ -70,19 +70,39 @@ public class OrderController  {
          codeService.insert(code);
          orderEntityDto.setCodeId(code.getId());
          orderService.insert(orderEntityDto);
-
-        return new ModelAndView("order-list");
+        List<OrderEntityDto> orderList =  pakege();
+        return new ModelAndView("order-list").addObject("orderList",orderList);
     }
 
-
-    @RequestMapping(value = "getAll")
-    private ModelAndView getAll()
+    /**填写订单**/
+    @RequestMapping(value = "writeOrder")
+    private ModelAndView writeOrder()
     {
         List<Fashion> list = fashionService.getAll();
         return new ModelAndView("order-write").addObject("list",list);
     }
 
+    /**所有订单**/
+    @RequestMapping(value = "listOrder")
+    private ModelAndView listOrder()
+    {
+        List<OrderEntityDto> orderList =  pakege();
+        return new ModelAndView("order-list").addObject("orderList",orderList);
+    }
 
-
-
+    /**封装查询全部业务的代码**/
+    private List<OrderEntityDto> pakege()
+    {
+        List<OrderEntityDto> orderList = orderService.getAll();
+        for (OrderEntityDto orderEntityDto:orderList)
+        {
+            if (orderEntityDto.getFashionId()!=null)
+            {
+                Fashion fashion = fashionService.getById(orderEntityDto.getFashionId());
+                orderEntityDto.setOtherFashion(fashion.getFashionName());
+            }
+            orderEntityDto.setShowStatus(Status.status[orderEntityDto.getStatus()]);
+        }
+        return orderList;
+    }
 }

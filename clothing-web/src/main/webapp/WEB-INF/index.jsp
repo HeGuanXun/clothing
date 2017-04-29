@@ -87,8 +87,12 @@
 			<dt><i class="Hui-iconfont">&#xe613;</i> 订单管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="test.jsp" data-title="所有订单" href="javascript:void(0)">所有订单</a></li>
-					<li><a data-href="order/getAll" data-title="发单" href="javascript:void(0)">发单</a></li>
+					<li><a data-href="order/listOrder" data-title="所有订单" href="javascript:void(0)">全都订单</a></li>
+					<li><a data-href="order/writeOrder" data-title="填写订单" href="javascript:void(0)">填写订单</a></li>
+					<li><a data-href="order/writeOrder" data-title="审核订单" href="javascript:void(0)">审核订单</a></li>
+					<li><a data-href="order/writeOrder" data-title="设计订单" href="javascript:void(0)">设计订单</a></li>
+					<li><a data-href="order/writeOrder" data-title="审批订单" href="javascript:void(0)">审批订单</a></li>
+					<li><a data-href="order/writeOrder" data-title="财务收款" href="javascript:void(0)">审批订单</a></li>
 				</ul>
 			</dd>
 			</dl>

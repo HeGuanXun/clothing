@@ -38,7 +38,7 @@
 		]]>
 	</sql>
 
-	<resultMap id="BeanMap" type="com.hegx.po.OrderEntity">
+	<resultMap id="BeanMap" type="com.hegx.dto.OrderEntityDto">
 		<id column="orderId" property="orderId"  jdbcType="INTEGER"/>
 		<result column="fashionId" property="fashionId" jdbcType="INTEGER"/>
 		<result column="codeId" property="codeId" jdbcType="INTEGER"/>
