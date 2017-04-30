@@ -47,7 +47,7 @@ public class LoginController {
 		UserEntityDto	orgUserEntityDto =	userService.checkLogin(userEntityDto);
 		if(orgUserEntityDto!=null)
 		{
-			session.setAttribute("userId",orgUserEntityDto.getId());
+			session.setAttribute("user",orgUserEntityDto);
 			session.setAttribute("success", "success");
 			ModelAndView modelAndView = new ModelAndView("index");
 			modelAndView.addObject(orgUserEntityDto);

@@ -89,10 +89,11 @@
 				<ul>
 					<li><a data-href="order/listOrder" data-title="所有订单" href="javascript:void(0)">全都订单</a></li>
 					<li><a data-href="order/writeOrder" data-title="填写订单" href="javascript:void(0)">填写订单</a></li>
-					<li><a data-href="order/writeOrder" data-title="审核订单" href="javascript:void(0)">审核订单</a></li>
-					<li><a data-href="order/writeOrder" data-title="设计订单" href="javascript:void(0)">设计订单</a></li>
-					<li><a data-href="order/writeOrder" data-title="审批订单" href="javascript:void(0)">审批订单</a></li>
-					<li><a data-href="order/writeOrder" data-title="财务收款" href="javascript:void(0)">审批订单</a></li>
+					<li><a data-href="order/flowOrder/0" data-title="审核订单" href="javascript:void(0)">审核订单</a></li>
+					<li><a data-href="order/flowOrder/1" data-title="设计订单" href="javascript:void(0)">设计订单</a></li>
+					<li><a data-href="order/flowOrder/2" data-title="审批订单" href="javascript:void(0)">审批订单</a></li>
+					<li><a data-href="order/flowOrder/3" data-title="财务收款" href="javascript:void(0)">财务收款</a></li>
+					<li><a data-href="order/flowOrder/4" data-title="生产订单" href="javascript:void(0)">生产订单</a></li>
 				</ul>
 			</dd>
 			</dl>

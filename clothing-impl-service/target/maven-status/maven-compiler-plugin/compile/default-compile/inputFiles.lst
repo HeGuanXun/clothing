@@ -1,3 +1,4 @@
+E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\po\Delivery.java
 E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\po\Code.java
 E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\utils\PasswordUtils.java
 E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\po\Fashion.java
@@ -10,12 +11,16 @@ E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\base\service\BaseSe
 E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\po\UserEntity.java
 E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\dto\OrderEntityDto.java
 E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\service\impl\CodeServiceImpl.java
+E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\dao\BelongDao.java
 E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\constants\ResultConstants.java
 E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\utils\MyStringUtils.java
 E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\service\CodeService.java
+E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\service\impl\BelongServiceImpl.java
+E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\dao\DeliveryDao.java
 E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\dto\FashionDto.java
 E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\utils\JsonDateDeserializer.java
 E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\dao\UserDao.java
+E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\po\Belong.java
 E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\utils\DownloadStream.java
 E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\utils\SystemUtils.java
 E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\utils\ImageUtil.java
@@ -25,9 +30,11 @@ E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\dao\CodeDao.java
 E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\utils\MyUploadStream.java
 E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\service\FashionService.java
 E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\dao\OrderDao.java
+E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\service\impl\DeliveryServiceImpl.java
 E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\base\dao\BaseDao.java
 E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\constants\ExceptionConstants.java
 E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\fiter\AuthitorFilter.java
+E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\service\BelongService.java
 E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\service\impl\FashionServiceImpl.java
 E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\base\dto\BaseDto.java
 E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\base\service\impl\BaseServiceImpl.java
@@ -35,4 +42,5 @@ E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\po\OrderEntity.java
 E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\service\impl\UserServiceImpl.java
 E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\utils\JsonDateSerializer.java
 E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\service\OrderService.java
+E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\service\DeliveryService.java
 E:\git\clothing\clothing-impl-service\src\main\java\com\hegx\service\impl\OrderServiceImpl.java

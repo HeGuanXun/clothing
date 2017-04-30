@@ -9,6 +9,8 @@ import com.hegx.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by hegx on 2017/4/24.
  */
@@ -23,9 +25,18 @@ public class OrderServiceImpl extends BaseServiceImpl<OrderEntityDto> implements
         return this.orderDao;
     }
 
+    @Override
+    public OrderEntityDto getByOrderId(Long id) {
+        return orderDao.getByOrderId(id);
+    }
 
     @Override
-    public OrderEntity getByOrderId(Long id) {
-        return orderDao.getByOrderId(id);
+    public List<OrderEntityDto> getAllForFlow(Short status) {
+        return orderDao.getAllForFlow(status);
+    }
+
+    @Override
+    public void deleteByOrderId(Long orderId) {
+        orderDao.deleteByOrderId(orderId);
     }
 }

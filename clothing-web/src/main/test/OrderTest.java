@@ -2,9 +2,13 @@
 import com.hegx.controller.util.Permission;
 import com.hegx.controller.util.Status;
 import com.hegx.dto.OrderEntityDto;
+import com.hegx.po.Belong;
 import com.hegx.po.Code;
+import com.hegx.po.Delivery;
 import com.hegx.po.OrderEntity;
+import com.hegx.service.BelongService;
 import com.hegx.service.CodeService;
+import com.hegx.service.DeliveryService;
 import com.hegx.service.OrderService;
 import org.apache.commons.collections.CollectionUtils;
 import org.junit.Test;
@@ -29,11 +33,12 @@ public class OrderTest {
 
     @Autowired
     private OrderService orderService;
-
     @Autowired
     private CodeService codeService;
-
-    private LocalDate localDate = LocalDate.now();
+    @Autowired
+    private DeliveryService deliveryService;
+    @Autowired
+    private BelongService belongService;
 
     @Test
     public void getAll()
@@ -43,7 +48,7 @@ public class OrderTest {
         {
             for (OrderEntity orderEntity:list)
             {
-                System.out.println("客户名："+orderEntity.getCustomName()+"\t"+orderEntity.getAddress()+"\t"+orderEntity.getClassName());
+                //System.out.println("客户名："+orderEntity.getCustomName()+"\t"+orderEntity.getAddress()+"\t"+orderEntity.getClassName());
             }
         }
     }
@@ -58,8 +63,21 @@ public class OrderTest {
     @Test
     public void  insert()
     {
+        Belong belong = new Belong();
+        belong.setS_province("海南省");
+        belong.setS_city("儋州市");
+        belong.setS_county("那大镇");
+        belong.setSchool("那大第一中学");
 
-        OrderEntityDto orderEntity  = new OrderEntityDto();
+        Delivery delivery = new Delivery();
+        delivery.setWay("快递");
+        delivery.setPersonName("何冠勋");
+        delivery.setRelationPhone("17770067860");
+        delivery.setSs_province("海南省");
+        delivery.setSs_county("儋州市");
+        delivery.setSs_city("那大镇");
+        delivery.setAddress("儋州市第一中学");
+
         Code code = new Code();
         code.setMxl(20);
         code.setMs(25);
@@ -71,13 +89,15 @@ public class OrderTest {
         code.setMxs(7);
         code.setTotalCount(120);
 
+        OrderEntityDto orderEntity  = new OrderEntityDto();
+        orderEntity.setCodeId(100);
+        orderEntity.setUserId(100);
+        orderEntity.setDeliveryId(100);
+        orderEntity.setBelongId(100);
         orderEntity.setPhoneNumber("13697504511");
         orderEntity.setGetOrderDate(new Date());
-        orderEntity.setAddress("深圳市泰然九路海松大厦701深圳达富金融互联网公司");
-        orderEntity.setBelong("江西省上饶市临川一中");
         orderEntity.setCustomName("李珍娇");
         orderEntity.setClassName("高三一班");
-        orderEntity.setCodeId(1);
         orderEntity.setCreateDate(new Date());
         orderEntity.setColor("红色");
         orderEntity.setEndDate(new Date());
@@ -86,16 +106,15 @@ public class OrderTest {
         orderEntity.setEndDate(new Date());
         orderEntity.setEndReason("用户取消订单");
         orderEntity.setStatus(Status.check);
-        orderEntity.setUserId(1);
         orderEntity.setRemarks("改订单很急，请客服早点通过");
-        orderEntity.setRelationPhone("17770067860");
         orderEntity.setPrint("一个丝网印一个烫画");
-        orderEntity.setFashionId(1);
+        orderEntity.setFashionName("暴走时代A款");
         orderEntity.setOtherFashion("帝峰衫国款式");
         orderEntity.setMoney("5200");
-        orderEntity.setWay("快递");
         orderEntity.setOrderNumber("2017042601");
-        orderEntity.setPersonName("heguanxun");
+
+        deliveryService.insert(delivery);
+        belongService.insert(belong);
         codeService.insert(code);
         orderService.insert(orderEntity);
     }
@@ -105,11 +124,9 @@ public class OrderTest {
     public  void  update()
     {
         OrderEntityDto orderEntity  = new OrderEntityDto();
-        orderEntity.setAddress("江西省南昌市上海路");
-       orderEntity.setBelong("江西省上饶市临川一中");
          orderEntity.setCustomName("符亚敏");
         orderEntity.setOrderId(Long.valueOf(6));
-        //orderService.update(orderEntity);
+        orderService.update(orderEntity);
     }
 
 

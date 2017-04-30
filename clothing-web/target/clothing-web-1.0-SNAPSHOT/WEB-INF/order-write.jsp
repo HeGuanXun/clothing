@@ -50,13 +50,15 @@
 
 <div class="col-xs-12">
     <form  method="post" action="order/doAddOrder">
-      <%--  <div class="operate panel panel-default">
+        <div class="operate panel panel-default">
             <div class="panel-body">
                 <div class="pull-right" align="right">
-                    <input type="submit" value="新增" class="btn btn-sm btn-primary"></input>
+                    <input type="submit" value="新增" onclick="return orgSubmit()" class="btn btn-sm btn-primary"></input>
                 </div>
             </div>
-        </div>--%>
+        </div>
+
+        <%--  <input class="btn btn-sm btn-primary" type="submit" onclick="return submit1()" value="新增">--%>
         <table id="addorder" border=1 cellspacing=0 cellpadding=0 style='border-collapse:collapse;border:none;background-color: #EEEEEE'>
 
             <tr style='height:47.0pt'>
@@ -75,7 +77,7 @@
                     <p style='text-align:center;width: 120px'><b><span style='font-size:9.0pt;font-family:宋体'>客户名称</span></b></p>
                     <p style='text-align:center'><b><span style='font-size:9.0pt;font-family:宋体'>（班长）</span></b></p>
                 </td>
-                <td  colspan=2 rowspan=2 style='width:60px;border:solid 1.0pt;border-top:solid 1.5pt;
+                <td  colspan=1 rowspan=2 style='width:60px;border:solid 1.0pt;border-top:solid 1.5pt;
   padding:0cm 5.4pt 0cm 5.4pt;height:13.1pt'>
                     <input class="input-text" width="60px" type="text" id="customName" name="customName" check="require" msg="请输入客户名称">
                 </td>
@@ -109,7 +111,7 @@
   border-bottom:solid 1.0pt;border-right:solid 1.0pt;
   padding:0cm 5.4pt 0cm 5.4pt;height:13.1pt'>
                     <p style='text-align:center;width: 120px;text-autospace:ideograph-other'><span  style='font-size:9.0pt;font-family:宋体;text-align:center;'>&nbsp;
-                       &nbsp;&nbsp;&nbsp;&nbsp;
+
                         Q Q</span><span style='font-size:9.0pt;font-family:宋体'>：</span></p>
                 </td>
                 <td width=159 colspan=2 style='width:119.1pt;border-left:
@@ -148,7 +150,7 @@
                     <p style='text-align:center;'><span style='font-size:9.0pt;font-family:宋体'>
                         其他款式</span></p>
                 </td>
-                <td width=159 colspan=4 style='width:119.1pt;border-left:
+                <td width=159 colspan=3 style='width:119.1pt;border-left:
   none;border-bottom:solid 1.0pt;border-right:solid 1.5pt;
   padding:5.5pt 5.4pt 0cm 5.4pt;height:26.95pt'>
                     <p style='text-align:center;'><span style='font-size:9.0pt;font-family:宋体'>
@@ -166,7 +168,7 @@ border-bottom:solid 1.0pt;border-right:solid 1.0pt;
 padding:0cm 5.4pt 0cm 5.4pt;height:26.9pt'>
                  <p style='text-align:center'><b><span style='font-size:9.0pt;font-family:宋体'>订单归属地</span></b></p>
              </td>
-             <td width=462 colspan=9 style='width:346.35pt;border-left:
+             <td width=462 colspan=8 style='width:346.35pt;border-left:
 none;border-bottom:solid 1.0pt;border-right:solid 1.5pt;
 padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
                  <p><span style='font-size:9.0pt;font-family:宋体'>
@@ -269,7 +271,7 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
    padding:5.4pt 5.4pt 0cm 5.4pt;height:15.7pt'>
                     <p><span style='font-size:9.0pt;font-family:宋体'><input class="input-text" type="text" name="money" id="money" /></span></p>
                 </td>
-                <td width=112 colspan=2 rowspan=3 style='width:83.75pt;border:solid 1.0pt;
+                <td width=112 colspan=1 rowspan=3 style='width:83.75pt;border:solid 1.0pt;
    padding:0cm 5.4pt 0cm 5.4pt;height:15.7pt'>
                     <p style='text-align:center'><b><span style='font-size:9.0pt;font-family:宋体'>印制说明</span></b></p>
                 </td>
@@ -328,7 +330,7 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
                             });
                         </script>
                 </td>
-                <td width=112 colspan=2 rowspan=2 style='width:83.75pt;border:solid 1.0pt;
+                <td width=112 colspan=1 rowspan=2 style='width:83.75pt;border:solid 1.0pt;
    padding:0cm 5.4pt 0cm 5.4pt;height:15.7pt'>
                     <p style='text-align:center'><b><span style='font-size:9.0pt;font-family:宋体'>备注</span></b></p>
                 </td>
@@ -344,12 +346,15 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
   border-bottom:solid 1.0pt;border-right:solid 1.0pt;
   padding:0cm 5.4pt 0cm 5.4pt;height:15.7pt'>
                     <p style='text-align:center'><b><span style='font-size:9.0pt;font-family:宋体'>接 单 人</span></b></p>
-                    <input type="hidden" id="userId" name="userId" value="${sessionScope.userId}">
+                    <input type="hidden" id="userId" name="userId" value="${sessionScope.user.id}">
                 </td>
                 <td width=165 colspan=4 style='width:123.5pt;border-left:
   none;border-bottom:solid 1.0pt;border-right:solid 1.0pt;
   padding:0cm 5.4pt 0cm 5.4pt;height:15.7pt'>
-                    <p><b><span style='font-size:9.0pt;font-family:宋体'></span></b></p>
+                    <p><b><span style='font-size:9.0pt;font-family:宋体'>
+
+
+                    </span></b></p>
                 </td>
             </tr>
             <tr style='height:17.7pt'>
@@ -402,7 +407,7 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
                     <p style='text-align:center'><b><span
                             style='font-size:9.0pt;font-family:宋体;color:black'>联系方式</span></b></p>
                 </td>
-                <td width=110 colspan=1 style='width:82.35pt;border-left:none;border-bottom:solid 1.0pt;border-right:solid 1.5pt;
+                <td width=110 colspan=3 style='width:82.35pt;border-left:none;border-bottom:solid 1.0pt;border-right:solid 1.5pt;
   padding:0cm 5.4pt 0cm 5.4pt;height:27.7pt'>
                     <input class="input-text" type="text" id="relationPhone" name="relationPhone">
                 </td>
@@ -432,18 +437,11 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
                         </div>
                     </div>
                 </td>
-                <td width=218 colspan=3 style='width:163.5pt;border-left:none;border-bottom:solid 1.5pt;border-right:solid 1.5pt;
+                <td width=218 colspan=5 style='width:163.5pt;border-left:none;border-bottom:solid 1.5pt;border-right:solid 1.5pt;
   padding:0cm 5.4pt 0cm 5.4pt;height:27.7pt'>
-                    <input class="input-text" type="text" id="address" name="address">
+                    <input class="input-text" type="text" id="address" name="address" placeholder="请补全收件地址">
                 </td>
             </tr>
-
-
-            <tr>
-                <td colspan="10" style="border: none;width: 753px;position: absolute;padding-top: 8px;" rowspan="3" align="right"><br><input class="btn btn-sm btn-primary" type="submit" onclick="return submit1()" value="新增"></td>
-            </tr>
-
-
         </table>
     </form>
 </div>
@@ -484,8 +482,8 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
 
 <script type="text/javascript">
 
-    function submit1(){
-        if(window.confirm('你确定要审核通过吗？')){
+    function orgSubmit(){
+        if(window.confirm('你确定要提交该订单吗？')){
             //alert("确定");
             return true;
         }else{

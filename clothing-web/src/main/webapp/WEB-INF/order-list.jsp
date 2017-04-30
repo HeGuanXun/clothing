@@ -56,7 +56,6 @@
             <th width="100">下单时间</th>
             <th width="100">发货时间</th>
             <th width="100">订单状态</th>
-            <th width="200">归属地</th>
             <th width="100">操作</th>
         </tr>
         </thead>
@@ -65,7 +64,7 @@
         <c:choose>
             <c:when test="${empty orderList}">
                 <tr>
-                    <td colspan="8" style="text-align: center;">没有数据!!!</td>
+                    <td colspan="11" style="text-align: center;">没有数据!!!</td>
                 </tr>
             </c:when>
             <c:otherwise>
@@ -95,9 +94,8 @@
                             </script>
                         </td>
                         <td>${orderEntityDto.showStatus}</td>
-                        <td>${orderEntityDto.belong}</td>
-                        <td class="td-manage"><a title="编辑" href="javascript:;" onclick="admin_edit('用户编辑','admin/getToEdit/${userEntityDto.id}','1','800','500')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<a title="删除" href="javascript:;" onclick="admin_del(this,'${userEntityDto.id}')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+                        <td class="td-manage"><a title="编辑" href="javascript:;" onclick="admin_edit('用户编辑','order/getToEdit/${orderEntityDto.orderId}','1','800','500')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<a title="删除" href="javascript:;" onclick="admin_del(this,'${orderEntityDto.orderId}')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
                     </tr>
 
                 </c:forEach>
@@ -147,14 +145,14 @@
     function admin_add(title,url,w,h){
         layer_show(title,url,w,h);
     }
-    /*管理员-删除*/
-    function admin_del(obj,id){
+    /*订单-删除*/
+    function admin_del(obj,orderId){
         layer.confirm('确认要删除吗？',function(index){
             $.ajax({
-                type: 'POST',
-                url: 'admin/deletedById',
+                async:true,//异步
+                type: 'GET',
+                url: 'order/deleteOrder/'+orderId+'',
                 dataType: 'json',
-                data:{"id":id},
                 success: function(data){
                     if(data.message == "deleted")
                     {
@@ -164,8 +162,8 @@
                         location.reload(index);
                     }
                 },
-                error:function(data) {
-                    console.log(data.msg);
+                error:function() {
+                    layer.msg('程序出现异常，清联系管理员!',{icon:1,time:2000});
                 },
             });
         });

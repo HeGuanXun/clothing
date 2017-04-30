@@ -10,7 +10,7 @@
 		<![CDATA[
 		SELECT
 		  orderId,
-		  fashionId,
+		  fashionName,
 		  codeId,
 		  userId,
 		  customName,
@@ -25,14 +25,11 @@
 		  getOrderDate,
 		  sendDate,
 		  remarks,
-		  way,
-		  personName,
-		  relationPhone,
-		  address,
+		  deliveryId,
 		  createDate,
 		  endReason,
 		  endDate,
-		  belong,
+		  belongId,
 		  status,
 		  orderNumber
 		]]>
@@ -40,7 +37,7 @@
 
 	<resultMap id="BeanMap" type="com.hegx.dto.OrderEntityDto">
 		<id column="orderId" property="orderId"  jdbcType="INTEGER"/>
-		<result column="fashionId" property="fashionId" jdbcType="INTEGER"/>
+		<result column="fashionName" property="fashionName" jdbcType="VARCHAR"/>
 		<result column="codeId" property="codeId" jdbcType="INTEGER"/>
 		<result column="userId" property="userId" jdbcType="INTEGER"/>
 		<result column="className" property="className" jdbcType="VARCHAR" />
@@ -55,26 +52,20 @@
 		<result column="getOrderDate" property="getOrderDate" jdbcType="DATE" />
 		<result column="sendDate" property="sendDate" jdbcType="DATE" />
 		<result column="remarks" property="remarks" jdbcType="VARCHAR" />
-		<result column="way" property="way" jdbcType="VARCHAR"/>
-		<result column="personName" property="personName" jdbcType="VARCHAR" />
-		<result column="relationPhone" property="relationPhone" jdbcType="VARCHAR" />
-		<result column="address" property="address" jdbcType="VARCHAR" />
+		<result column="deliveryId" property="deliveryId" jdbcType="INTEGER"/>
 		<result column="createDate" property="createDate" jdbcType="DATE" />
 		<result column="endReason" property="endReason" jdbcType="VARCHAR" />
-		<result column="belong" property="belong" jdbcType="VARCHAR"/>
+		<result column="belongId" property="belongId" jdbcType="INTEGER"/>
 		<result column="status" property="status" jdbcType="DATE"/>
 		<result column="orderNumber" property="orderNumber" jdbcType="VARCHAR"/>
 	</resultMap>
 
 	<!-- 新增 -->
 	<insert id="insert">
-
-
-
 		INSERT INTO
 		<include refid="t_order" />
 		(
-		fashionId,
+		fashionName,
 		codeId,
 		userId,
 		customName,
@@ -89,18 +80,15 @@
 		getOrderDate,
 		sendDate,
 		remarks,
-		way,
-		personName,
-		relationPhone,
-		address,
+		deliveryId,
 		createDate,
 		endReason,
 		endDate,
-		belong,
+		belongId,
 		status,
 		orderNumber
 		) VALUES (
-		#{fashionId},
+		#{fashionName},
 		#{codeId},
 		#{userId},
 		#{customName},
@@ -115,14 +103,11 @@
 		#{getOrderDate},
 		#{sendDate},
 		#{remarks},
-		#{way},
-		#{personName},
-		#{relationPhone},
-		#{address},
+		#{deliveryId},
 		#{createDate},
 		#{endReason},
 		#{endDate},
-		#{belong},
+		#{belongId},
 		#{status},
 		#{orderNumber}
 		)
@@ -133,8 +118,8 @@
 		UPDATE
 		<include refid="t_order" />
 		<set>
-			<if test="fashionId != null">
-				fashionId = #{fashionId},
+			<if test="fashionName != null">
+				fashionName = #{fashionName},
 			</if>
 			<if test="codeId != null">
 				codeId = #{codeId},
@@ -175,17 +160,8 @@
 			<if test="remarks != null">
 				remarks = #{remarks},
 			</if>
-			<if test="way != null">
-				way = #{way},
-			</if>
-			<if test="personName != null">
-				personName = #{personName},
-			</if>
-			<if test="relationPhone != null">
-				relationPhone = #{relationPhone},
-			</if>
-			<if test="address != null">
-				address = #{address},
+			<if test="deliveryId != null">
+				deliveryId = #{deliveryId},
 			</if>
 			<if test="createDate != null">
 				createDate = #{createDate},
@@ -196,8 +172,8 @@
 			<if test="endDate != null">
 				endDate = #{endDate},
 			</if>
-			<if test="belong != null">
-				belong = #{belong},
+			<if test="belongId != null">
+				belongId = #{belongId},
 			</if>
 			<if test="status != null">
 				status = #{status},
@@ -212,10 +188,10 @@
 
 
 	<!--真删除 -->
-	<delete id="deleteById" parameterType="Long">
+	<delete id="deleteByOrderId" parameterType="Long">
 		DELETE FROM
 		<include refid="t_order" />
-		WHERE orderId = #{orderId,jdbcType=INTEGER}
+		WHERE orderId = #{orderId}
 	</delete>
 
 	<!-- 根据id查询 -->
@@ -224,7 +200,7 @@
 		FROM
 		<include refid="t_order" />
 		<![CDATA[
-		 WHERE orderId = #{orderId}
+		 WHERE orderId = #{orderId} AND  endReason is NULL
 		]]>
 	</select>
 
@@ -234,8 +210,16 @@
 		<include refid="selectFieldSQL" />
 		FROM
 		<include refid="t_order" />
+		WHERE endReason is NULL
 	</select>
-	
+
+	<!-- 查询所有流程状态的订单 -->
+	<select id="getAllForFlow" parameterType="Short" resultMap="BeanMap">
+		<include refid="selectFieldSQL" />
+		FROM
+		<include refid="t_order" />
+		WHERE status = #{status} AND endReason is NULL
+	</select>
 
 
 </mapper>

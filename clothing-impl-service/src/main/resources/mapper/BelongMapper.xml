@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hegx.dao.BelongDao">
+
+    <!--仪器级别表 ，下面引用，方便修改表名 -->
+    <sql id="t_belong"> t_belong </sql>
+
+    <!-- sql片段，查询用的字段,避免用“*” -->
+    <sql id="selectFieldSQL">
+        <![CDATA[
+		SELECT
+			id,
+            s_province,
+            s_city,
+            s_county,
+            school
+		]]>
+    </sql>
+
+    <resultMap id="BeanMap" type="com.hegx.po.Belong">
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="s_province" property="s_province" jdbcType="VARCHAR" />
+        <result column="s_city" property="s_city" jdbcType="VARCHAR" />
+        <result column="school" property="school" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <!--插入-->
+    <insert id="insert" parameterType="com.hegx.po.Belong">
+
+        <selectKey resultType="com.hegx.po.Belong" order="AFTER" keyProperty="id">
+            SELECT LAST_INSERT_ID() AS id
+        </selectKey>
+
+        INSERT INTO
+        <include refid="t_belong" />
+        (
+        s_province,
+        s_city,
+        s_county,
+        school
+        )VALUES(
+        #{s_province},
+        #{s_city},
+        #{s_county},
+        #{school}
+        )
+    </insert>
+
+    <!-- 更新 -->
+    <update id="update" parameterType="com.hegx.po.Belong">
+        UPDATE
+        <include refid="t_belong" />
+        <set>
+            s_province=#{s_province},
+            s_city=#{s_city},
+            s_county=#{s_county},
+            school=#{school}
+        </set>
+        WHERE id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <!-- 根据id查询 -->
+    <select id="getById" parameterType="Integer" resultMap="BeanMap">
+        <include refid="selectFieldSQL" />
+        FROM
+        <include refid="t_belong" />
+        <![CDATA[
+		 WHERE id = #{id,jdbcType=INTEGER}
+		]]>
+    </select>
+
+    <!--真删除 -->
+    <delete id="deleteById" parameterType="Integer">
+        DELETE FROM
+        <include refid="t_belong" />
+        WHERE id = #{id}
+    </delete>
+
+
+
+
+</mapper>
