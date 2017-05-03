@@ -39,4 +39,9 @@ public class OrderServiceImpl extends BaseServiceImpl<OrderEntityDto> implements
     public void deleteByOrderId(Long orderId) {
         orderDao.deleteByOrderId(orderId);
     }
+
+    @Override
+    public List<OrderEntityDto> myOrder(Integer userId) {
+        return orderDao.myOrder(userId);
+    }
 }

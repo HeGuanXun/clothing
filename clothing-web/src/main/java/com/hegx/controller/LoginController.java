@@ -1,6 +1,7 @@
 package com.hegx.controller;
 
 import com.hegx.controller.util.ImageTool;
+import com.hegx.dto.OrderEntityDto;
 import com.hegx.dto.UserEntityDto;
 import com.hegx.service.UserService;
 import net.sf.json.JSONObject;
@@ -32,10 +33,16 @@ public class LoginController {
 	public UserService userService;
 
 
-	@RequestMapping(value = "/index", method = {RequestMethod.POST})
+	@RequestMapping(value = "/index")
 	public ModelAndView index(UserEntityDto userEntityDto,HttpServletRequest request) throws Exception
 	{
 		HttpSession session = request.getSession();
+		if (session.getAttribute("orgUserEntityDto")!=null)
+		{
+			UserEntityDto orgUserEntityDto = (UserEntityDto)session.getAttribute("orgUserEntityDto");
+			return new ModelAndView("index").addObject("orgUserEntityDto",orgUserEntityDto);
+		}
+
 		String checkCode = (String) session.getAttribute("vaildCode");
 		//验证码验证
 		if(!checkCode.equals(userEntityDto.getCheckCode()))
@@ -47,8 +54,7 @@ public class LoginController {
 		UserEntityDto	orgUserEntityDto =	userService.checkLogin(userEntityDto);
 		if(orgUserEntityDto!=null)
 		{
-			session.setAttribute("user",orgUserEntityDto);
-			session.setAttribute("success", "success");
+			session.setAttribute("orgUserEntityDto",orgUserEntityDto);
 			ModelAndView modelAndView = new ModelAndView("index");
 			modelAndView.addObject(orgUserEntityDto);
 			return  modelAndView;

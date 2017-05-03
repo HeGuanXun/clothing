@@ -28,7 +28,7 @@ public class AuthitorFilter implements Filter {
 
 		                     Object userId=session.getAttribute("userId");
 							 Object checkCode =	session.getAttribute("checkCode");
-							 session.setMaxInactiveInterval(20*60);
+							 session.setMaxInactiveInterval(40*60);
 
 		                     if(userId!=null || checkCode!=null)
 

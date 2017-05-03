@@ -200,7 +200,7 @@
 		FROM
 		<include refid="t_order" />
 		<![CDATA[
-		 WHERE orderId = #{orderId} AND  endReason is NULL
+		 WHERE orderId = #{orderId}
 		]]>
 	</select>
 
@@ -210,7 +210,7 @@
 		<include refid="selectFieldSQL" />
 		FROM
 		<include refid="t_order" />
-		WHERE endReason is NULL
+		/*WHERE endReason is NULL*/
 	</select>
 
 	<!-- 查询所有流程状态的订单 -->
@@ -218,7 +218,15 @@
 		<include refid="selectFieldSQL" />
 		FROM
 		<include refid="t_order" />
-		WHERE status = #{status} AND endReason is NULL
+		WHERE status = #{status}
+	</select>
+
+	<!-- 根据用户查询所有订单 -->
+	<select id="myOrder" parameterType="Integer" resultMap="BeanMap">
+		<include refid="selectFieldSQL" />
+		FROM
+		<include refid="t_order" />
+		WHERE userId = #{userId}
 	</select>
 
 

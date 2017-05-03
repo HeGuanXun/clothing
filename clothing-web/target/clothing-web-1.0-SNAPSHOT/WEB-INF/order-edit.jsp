@@ -53,7 +53,7 @@
             <div class="operate panel panel-default">
                 <div class="panel-body">
                     <div class="pull-right" align="right">
-                        <input type="submit" value="确认编辑" onclick="return orgSubmit()" class="btn btn-sm btn-primary"></input>
+                        <input type="submit" align="right" value="编辑" onclick="return orgSubmit()" class="btn btn-sm btn-primary"></input>
                     </div>
                 </div>
             </div>
@@ -178,18 +178,30 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
                         <p><span style='font-size:9.0pt;font-family:宋体'>
                      <div class="info">
                         <div>
+                            <input type="hidden" id="province" value="${belong.s_province}">
                             <select id="s_province" name="s_province" class="select" style="width: 120px">
-                                <option value="${belong.s_province}">${belong.s_province}</option>
+                                <option selected="selected" value="${belong.s_province}">${belong.s_province}</option>
+                                <script>
+                                     setTimeout(function () {
+
+                                     }, 2000);
+                                       $(document).ready(function(){
+                                           var provice = $('#province').val();
+                                           console.log(provice);
+                                           $('s_province').append(provice);
+                                       });
+                                </script>
                             </select>  
                             <select id="s_city" name="s_city" class="select" style="width: 120px">
-                                 <option value="${belong.s_city}">${belong.s_city}</option>
+                                 <option selected="selected" value="${belong.s_city}">${belong.s_city}</option>
                             </select>  
                             <select id="s_county" name="s_county" class="select" style="width: 120px">
-                                <option value="${belong.s_county}">${belong.s_county}</option>
+                                <option selected="selected" value="${belong.s_county}">${belong.s_county}</option>
                             </select>
                             <script class="resources library" src="static/h-ui/js/area.js" type="text/javascript"></script>
                             <script type="text/javascript">_init_area();</script>
                              <input name="school" id="school" placeholder="输入学校等补充信息" value="${belong.school}" class="input-text" style="width: 300px;"/>
+                             <input type="hidden" id="belong.id" name="belong.id" value="${belong.id}">
                         </div>
                     </div>
                         </span></p>
@@ -264,6 +276,7 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
             <td width=36 style='width:32pt;border:solid 1.0pt;border-right:solid 1.5pt;height:15.75pt;text-align: center'>
                 <span id="totalCount">${code.totalCount}</span>
                 <input type="hidden" name="totalCount" value="${code.totalCount}">
+                <input type="hidden" id="code.id" name="code.id" value="${code.id}">
             </td>
         </tr>
 
@@ -282,13 +295,13 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
     padding:0cm 5.4pt 0cm 5.4pt;height:15.7pt'>
             <p style='text-align:center'><b><span style='font-size:9.0pt;font-family:宋体'>印制说明</span></b></p>
         </td>
-        <td width=200 colspan=3 rowspan=3 style='width:200.1pt;
-    border-bottom:solid 1.0pt;border-right:solid 1.5pt;
-    padding:0cm 5.4pt 0cm 5.4pt;height:15.7pt'>
-            <textarea class="input-text" name="print"  id="print"  check="require" msg="请说明印图技术" placeholder="请在此说明印图技术，如:2个单色图，或1个彩色图"  style="width:100%;height: 85px;">
-                ${orderEntityDto.print}
-            </textarea>
-        </td>
+
+    <td width=200 colspan=3 rowspan=3 style='width:200.1pt;
+border-bottom:solid 1.0pt;border-right:solid 1.5pt;
+padding:0cm 5.4pt 0cm 5.4pt;height:15.7pt'>
+        <textarea class="input-text" name="print"  id="print"  check="require" msg="请说明印图技术" placeholder="请在此说明印图技术，如:2个单色图，或1个彩色图"  style="width:100%;height: 85px;">${orderEntityDto.print}</textarea>
+    </td>
+
     </tr>
 
                 <tr style='height:15.7pt'>
@@ -311,7 +324,7 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
                     </td>
                     <td width=165 colspan=4 style='width:123.5pt;border-left:none;border-bottom:solid 1.0pt;border-right:solid 1.0pt;
    padding:0cm 5.4pt 0cm 5.4pt;height:15.7pt'>
-                        <p><b><span style='font-size:9.0pt;font-family:宋体'>
+                        <p><b><span style='font-size:11.0pt;font-family:宋体'>
                                <script>
                                 var datetime = moment('${orderEntityDto.getOrderDate}').format("YYYY-MM-DD");
                                 document.write(datetime);
@@ -329,24 +342,27 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
                     </td>
                     <td width=165 colspan=4 style='width:123.5pt;border-bottom:solid 1.0pt;border-right:solid 1.0pt; padding:0cm 5.4pt 0cm 5.4pt;height:15.7pt'>
                         <%--<input data-date-format="yyyy-mm-dd" style="width: 150px" id="ship_time" name="ship_time" readonly="readonly" class="input-date input-text" check="require" msg="发货时间不能为空" >--%>
-                        <input type="text" style="width: 150px" class="input-text" value="${orderEntityDto.sendDate}" id="sendDate" name="sendDate">
+                        <span style='font-size:9.0pt;font-family:宋体'> <input type="text" style="width: 150px" class="input-text"  id="sendDate" name="sendDate"></span>
                         <script type="text/javascript">
+                            var datetime = moment('${orderEntityDto.sendDate}').format("YYYY-MM-DD");
+                            $('#sendDate').val(datetime);
+
                             $(function(){
                                 $('#sendDate').datepicker({
                                     format: 'yyyy-mm-dd'
                                 });
                             });
+
                         </script>
                     </td>
-                    <td width=112 colspan=1 rowspan=2 style='width:83.75pt;border:solid 1.0pt;
-   padding:0cm 5.4pt 0cm 5.4pt;height:15.7pt'>
-                        <p style='text-align:center'><b><span style='font-size:9.0pt;font-family:宋体'>备注</span></b></p>
-                    </td>
-                    <td width=383 colspan=3 rowspan=2 style='width:287.1pt;border-bottom:solid 1.0pt;border-right:solid 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.7pt'>
-                        <textarea name="remarks" id="remarks" style="width:100%;height: 55px;" class="input-text">
-                            ${orderEntityDto.remarks}
-                        </textarea>
-                    </td>
+
+            <td width=112 colspan=1 rowspan=2 style='width:83.75pt;border:solid 1.0pt;
+padding:0cm 5.4pt 0cm 5.4pt;height:15.7pt'>
+                <p style='text-align:center'><b><span style='font-size:9.0pt;font-family:宋体'>备注</span></b></p>
+            </td>
+            <td width=383 colspan=3 rowspan=2 style='width:287.1pt;border-bottom:solid 1.0pt;border-right:solid 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;height:15.7pt'>
+                <textarea name="remarks" id="remarks"  style="width:100%;height: 55px;text-align: left" class="input-text">${orderEntityDto.remarks}</textarea>
+            </td>
                 </tr>
 
 
@@ -360,14 +376,14 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
                     <td width=165 colspan=4 style='width:123.5pt;border-left:
   none;border-bottom:solid 1.0pt;border-right:solid 1.0pt;
   padding:0cm 5.4pt 0cm 5.4pt;height:15.7pt'>
-                        <p><b><span style='font-size:9.0pt;font-family:宋体'>${sessionScope.user.userName}</span></b></p>
+                        <p><b><span style='font-size:9.0pt;font-family:宋体'>${sessionScope.user.realName}</span></b></p>
                     </td>
                 </tr>
                 <tr style='height:17.7pt'>
                     <td width=720 colspan=10 style='width:549.45pt;border-left:
   solid 1.5pt;border-bottom:solid 1.0pt;border-right:
   solid 1.5pt;padding:0cm 5.4pt 0cm 5.4pt;height:17.7pt'>
-                        <p style='text-align:center'><b><span style='font-size:9.0pt;font-family:宋体'>设计样稿（设计师：何冠勋）</span></b></p>
+                        <p style='text-align:center'><b><span style='font-size:8.0pt;font-family:宋体'>设计样稿（设计师：何冠勋）</span></b></p>
                     </td>
                 </tr>
 
@@ -448,6 +464,7 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
                     <td width=218 colspan=5 style='width:163.5pt;border-left:none;border-bottom:solid 1.5pt;border-right:solid 1.5pt;
   padding:0cm 5.4pt 0cm 5.4pt;height:27.7pt'>
                         <input class="input-text" type="text" id="address" name="address" value="${delivery.address}">
+                        <input type="hidden" id="delivery.id" name="delivery.id" value="${delivery.address}">
                     </td>
                 </tr>
             </table>

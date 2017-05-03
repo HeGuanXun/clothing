@@ -32,7 +32,10 @@
     <script src="js/moment.min.js"></script>
 </head>
 <body>
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 订单管理 <span class="c-gray en">&gt;</span> 发单 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span>
+    订单管理 <span class="c-gray en">&gt;</span> 发单
+    <%--<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" >
+        <i class="Hui-iconfont">&#xe68f;</i></a>--%></nav>
 
 <!--_footer 作为公共模版分离出去-->
 <script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
@@ -49,7 +52,7 @@
     <h3 style="color: blue">&nbsp;&nbsp;&nbsp;&nbsp;添加订单</h3>
 
 <div class="col-xs-12">
-    <form  method="post" action="order/doAddOrder">
+    <form  method="post" action="order/doAddOrder" id="form-order-add">
         <div class="operate panel panel-default">
             <div class="panel-body">
                 <div class="pull-right" align="right">
@@ -132,10 +135,10 @@
                 </td>
             <td width=462 colspan=2 style='width:200px;border-left:none;border-bottom:solid 1.0pt;border-right:none;
   padding:0cm 5.4pt 0cm 5.4pt;height:26.95pt'>
-                <select name="fashionId" id="style"  check="require" msg="请选择款式" class="select">
+                <select name="fashionName" id="style"  check="require" msg="请选择款式" class="select">
                     <option value="">选择款式</option>
                     <c:forEach items="${list}" var="fashion" varStatus="i">
-                    <option value="${fashion.id}">${fashion.fashionName}</option>
+                    <option value="${fashion.fashionName}">${fashion.fashionName}</option>
                     </c:forEach>
                 </select>
             </td>
@@ -346,7 +349,7 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
   border-bottom:solid 1.0pt;border-right:solid 1.0pt;
   padding:0cm 5.4pt 0cm 5.4pt;height:15.7pt'>
                     <p style='text-align:center'><b><span style='font-size:9.0pt;font-family:宋体'>接 单 人</span></b></p>
-                    <input type="hidden" id="userId" name="userId" value="${sessionScope.user.id}">
+                    <input type="hidden" id="userId" name="userId" value="${sessionScope.orgUserEntityDto.id}">
                 </td>
                 <td width=165 colspan=4 style='width:123.5pt;border-left:
   none;border-bottom:solid 1.0pt;border-right:solid 1.0pt;
@@ -483,6 +486,145 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
 <script type="text/javascript">
 
     function orgSubmit(){
+        var customName = $('#customName').val();
+        var className  = $('#className').val();
+        var phoneNumber = $('#phoneNumber').val();
+        var qq = $('#qq').val();
+        var color = $('#color').val();
+        var money = $('#money').val();
+        var earnest = $('#earnest').val();
+        var sendDate = $('#sendDate').val();
+        var mxs = $('#mxs').val();
+        var ms = $('#ms').val();
+        var mm = $('#mm').val();
+        var ml = $('#ml').val();
+        var mxl = $('#mxl').val();
+        var mxxl = $('#mxxl').val();
+        var way = $('#way').val();
+        var personName = $('#personName').val();
+        var relationPhone = $('#relationPhone').val();
+        var ss_province = $('#ss_province').val();
+        var ss_city = $('#ss_city').val();
+        var ss_county = $('#ss_county').val();
+        var address = $('#address').val();
+        var s_province = $('#s_province').val();
+        var s_city = $('#s_city').val();
+        var s_county = $('#s_county').val();
+        var school = $('#school').val();
+
+        if(ss_province=="")
+        {
+            layer.msg('收件地址省会信息不能为空！',{icon:1,time:3000});
+            return false;
+        }
+        if(ss_city=="")
+        {
+            layer.msg('收件地址地级市信息不能为空！',{icon:1,time:3000});
+            return false;
+        }
+        if(ss_county=="")
+        {
+            layer.msg('收件地址县城信息不能为空！',{icon:1,time:3000});
+            return false;
+        }
+
+        if(s_province=="")
+        {
+            layer.msg('订单归属地省会信息不能为空！',{icon:1,time:3000});
+            return false;
+        }
+        if(s_city=="")
+        {
+            layer.msg('订单归属地地级市信息不能为空！',{icon:1,time:3000});
+            return false;
+        }
+        if(s_county=="")
+        {
+            layer.msg('订单归属地县城信息不能为空！',{icon:1,time:3000});
+            return false;
+        }
+
+        if(customName=="")
+        {
+            layer.msg('客户姓名不能为空！',{icon:1,time:3000});
+            return false;
+        }
+        if(className=="")
+        {
+            layer.msg('单位（班级）不能为空！',{icon:1,time:3000});
+            return false;
+        }
+        if(phoneNumber=="")
+        {
+            layer.msg('电话不能为空！',{icon:1,time:3000});
+            return false;
+        }
+        if(qq=="")
+        {
+            layer.msg('qq不能为空！',{icon:1,time:3000});
+            return false;
+        }
+        if(color=="")
+        {
+            layer.msg('颜色不能为空！',{icon:1,time:3000});
+            return false;
+        }
+        if(money=="")
+        {
+            layer.msg('成交金额不能为空！',{icon:1,time:3000});
+            return false;
+        }
+        if(earnest=="")
+        {
+            layer.msg('定金不能为空！',{icon:1,time:3000});
+            return false;
+        }
+        if(sendDate=="")
+        {
+            layer.msg('请选择发货日期！',{icon:1,time:3000});
+            return false;
+        }
+        if(way=="")
+        {
+            layer.msg('请选择配送方式！',{icon:1,time:3000});
+            return false;
+        }
+        if(personName=="")
+        {
+            layer.msg('联系人名字不能为空！',{icon:1,time:3000});
+            return false;
+        }
+        if(relationPhone=="")
+        {
+            layer.msg('收件人电话不能为空！',{icon:1,time:3000});
+            return false;
+        }
+        if(address=="")
+        {
+            layer.msg('请填写收件人具体地址！',{icon:1,time:3000});
+            return false;
+        }
+        if(mxs<0||ms<0||mm<0||ml<0||mxl<0||mxxl<0||mxxxl<0)
+        {
+            layer.msg('订单尺码不能为负数！',{icon:1,time:3000});
+            return false;
+        }
+        test(mxs);
+        test(ms);
+        test(mm);
+        test(ml);
+        test(mxl);
+        test(mxxl);
+        test(mxxxl);
+
+        function test(code) {
+            if(code<0)
+            {
+                layer.msg("尺码"+code+"不能为负数");
+                return false;
+            }
+        }
+
         if(window.confirm('你确定要提交该订单吗？')){
             //alert("确定");
             return true;
@@ -514,14 +656,6 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
 <script src="/Public/js/common.js"></script>
 
 <script src="/bootstrap/js/bootstrap-datepicker.js"></script>
-
-<script type="text/javascript">
-        function add() {
-
-        };
-</script>
-
-
 
 
 </body>

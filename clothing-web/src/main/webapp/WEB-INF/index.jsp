@@ -38,24 +38,12 @@
 		<div class="container-fluid cl"> <a class="logo navbar-logo f-l mr-10 hidden-xs" href="/aboutHui.shtml">企业班服管理系统</a> <a class="logo navbar-logo-m f-l mr-10 visible-xs" href="/aboutHui.shtml">H-ui</a>
 			<span class="logo navbar-slogan f-l mr-10 hidden-xs">v1.0</span>
 			<a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="javascript:;">&#xe667;</a>
-			<nav class="nav navbar-nav">
-				<ul class="cl">
-					<li class="dropDown dropDown_hover"><a href="javascript:;" class="dropDown_A"><i class="Hui-iconfont">&#xe600;</i> 新增 <i class="Hui-iconfont">&#xe6d5;</i></a>
-						<ul class="dropDown-menu menu radius box-shadow">
-							<li><a href="javascript:;" onclick="article_add('添加资讯','article-add.jsp')"><i class="Hui-iconfont">&#xe616;</i> 资讯</a></li>
-							<li><a href="javascript:;" onclick="picture_add('添加资讯','picture-add.jsp')"><i class="Hui-iconfont">&#xe613;</i> 图片</a></li>
-							<li><a href="javascript:;" onclick="product_add('添加资讯','product-add.jsp')"><i class="Hui-iconfont">&#xe620;</i> 产品</a></li>
-							<li><a href="javascript:;" onclick="member_add('添加用户','member-add.jsp','','510')"><i class="Hui-iconfont">&#xe60d;</i> 用户</a></li>
-					</ul>
-				</li>
-			</ul>
-		</nav>
 			<nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
 				<ul class="cl">
-					<li>${userEntityDto.department}
+					<li>${orgUserEntityDto.department}
 					</li>
 					<li class="dropDown dropDown_hover">
-						<a href="#" class="dropDown_A">${userEntityDto.realName}<i class="Hui-iconfont">&#xe6d5;</i></a>
+						<a href="#" class="dropDown_A">${orgUserEntityDto.realName}<i class="Hui-iconfont">&#xe6d5;</i></a>
 						<ul class="dropDown-menu menu radius box-shadow">
 							<li><a href="javascript:;" onClick="myselfinfo()">个人信息</a></li>
 							<li><a href="#">切换账户</a></li>
@@ -81,7 +69,24 @@
 
 <aside class="Hui-aside">
 
-	<c:if test="${userEntityDto.permission==0}">
+	<c:if test="${orgUserEntityDto.permission==1}">
+		<div class="menu_dropdown bk_2">
+			<dl id="menu-order">
+				<dt><i class="Hui-iconfont">&#xe613;</i> 订单管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+				<dd>
+					<ul>
+						<li><a data-href="order/writeOrder" data-title="填写订单" href="javascript:void(0)">填写订单</a></li>
+						<li><a data-href="order/myOrder/${sessionScope.orgUserEntityDto.id}" data-title="我的订单" href="javascript:void(0)">我的订单</a></li>
+					</ul>
+				</dd>
+			</dl>
+	</c:if>
+	<c:if test="${orgUserEntityDto.permission==2}"></c:if>
+	<c:if test="${orgUserEntityDto.permission==3}"></c:if>
+	<c:if test="${orgUserEntityDto.permission==4}"></c:if>
+	<c:if test="${orgUserEntityDto.permission==5}"></c:if>
+
+	<c:if test="${orgUserEntityDto.permission==0}">
 		<div class="menu_dropdown bk_2">
 			<dl id="menu-order">
 			<dt><i class="Hui-iconfont">&#xe613;</i> 订单管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
@@ -89,11 +94,14 @@
 				<ul>
 					<li><a data-href="order/listOrder" data-title="所有订单" href="javascript:void(0)">全都订单</a></li>
 					<li><a data-href="order/writeOrder" data-title="填写订单" href="javascript:void(0)">填写订单</a></li>
-					<li><a data-href="order/flowOrder/0" data-title="审核订单" href="javascript:void(0)">审核订单</a></li>
-					<li><a data-href="order/flowOrder/1" data-title="设计订单" href="javascript:void(0)">设计订单</a></li>
-					<li><a data-href="order/flowOrder/2" data-title="审批订单" href="javascript:void(0)">审批订单</a></li>
-					<li><a data-href="order/flowOrder/3" data-title="财务收款" href="javascript:void(0)">财务收款</a></li>
-					<li><a data-href="order/flowOrder/4" data-title="生产订单" href="javascript:void(0)">生产订单</a></li>
+					<li><a data-href="order/getFlowOrder/0" data-title="审核订单" href="javascript:void(0)">审核订单</a></li>
+					<li><a data-href="order/getFlowOrder/1" data-title="设计订单" href="javascript:void(0)">设计订单</a></li>
+					<li><a data-href="order/getFlowOrder/2" data-title="审批订单" href="javascript:void(0)">审批订单</a></li>
+					<li><a data-href="order/getFlowOrder/3" data-title="财务收款" href="javascript:void(0)">财务收款</a></li>
+					<li><a data-href="order/getFlowOrder/4" data-title="排单" href="javascript:void(0)">排单</a></li>
+					<li><a data-href="order/getFlowOrder/5" data-title="回款完成" href="javascript:void(0)">回款完成</a></li>
+					<li><a data-href="order/getFlowOrder/6" data-title="已完成回款订单" href="javascript:void(0)">已完成回款订单</a></li>
+					<li><a data-href="order/getFlowOrder/7" data-title="异常订单" href="javascript:void(0)">异常订单</a></li>
 				</ul>
 			</dd>
 			</dl>

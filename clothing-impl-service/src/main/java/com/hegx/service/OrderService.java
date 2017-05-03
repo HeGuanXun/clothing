@@ -19,4 +19,8 @@ public interface OrderService extends BaseService<OrderEntityDto> {
 
     /**根据订单ID删除相应的记录**/
     public void deleteByOrderId(Long orderId);
+
+    /**根据用户查询订单**/
+    public List<OrderEntityDto> myOrder(Integer userId);
+
 }
