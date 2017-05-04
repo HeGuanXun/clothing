@@ -56,9 +56,8 @@
        }
       //加载验证码
       function loadCode(){
-          document.getElementById("img").src="login/checkCode"+"?"+new Date().getTime();
+          document.getElementById("img").src="login/checkCode"+"?checkCode=checkCode"+new Date().getTime();
       }
-
       //验证码验证
       $(document).ready(function(){
           $("#checkCode").mouseout(function(){
@@ -66,7 +65,7 @@
               if(checkCode!=""&& checkCode!="验证码:"){
                   $.ajax({
                       url:"checkCode",
-                      data:{"checkCode":checkCode,"id":id},
+                      data:{"checkCode":checkCode,"id":id,"checkCode":checkCode},
                       dataType:"json",
                       catche:false,
                       error:function(){"网络出错"},
@@ -88,7 +87,7 @@
 <div class="header"></div>
 <div class="loginWraper">
   <div id="loginform" class="loginBox">
-    <form class="form form-horizontal" action="index" method="post">
+    <form class="form form-horizontal" action="index" method="POST">
 
      <%-- <div class="row cl">
         <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe62c;</i></label>

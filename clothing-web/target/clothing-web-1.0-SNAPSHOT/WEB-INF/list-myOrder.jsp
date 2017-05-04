@@ -72,7 +72,7 @@
 
                     <tr class="text-c active">
                         <td><input type="checkbox" value="1" name=""></td>
-                        <td><a>${orderEntityDto.orderNumber}</a></td>
+                        <td><a title="我的订单" href="javascript:;" onclick="admin_edit('我的订单','order/toEditOrder/${orderEntityDto.orderId}','1','1125','500')" class="ml-5" style="text-decoration:none"> ${orderEntityDto.orderNumber}</a></td>
                         <td>${orderEntityDto.customName}</td>
 
                         <c:choose>
@@ -115,8 +115,6 @@
                             </c:otherwise>
                         </c:choose>
                       </td>
-
-
 
                         <td class="td-manage">
                             <button class="btn btn-primary">加做</button>

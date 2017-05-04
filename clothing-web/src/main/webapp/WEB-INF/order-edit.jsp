@@ -58,6 +58,9 @@
                 </div>
             </div>
 
+            <input type="hidden" name="status" value="${orderEntityDto.status}">
+            <input type="hidden" name="orderId" value="${orderEntityDto.orderId}">
+
             <%--  <input class="btn btn-sm btn-primary" type="submit" onclick="return submit1()" value="新增">--%>
             <table id="addorder" border=1 cellspacing=0 cellpadding=0 style='border-collapse:collapse;border:none;background-color: #EEEEEE'>
 
@@ -510,6 +513,10 @@ padding:0cm 5.4pt 0cm 5.4pt;height:15.7pt'>
     function orgSubmit(){
         if(window.confirm('你确定要提交编辑吗？')){
             //alert("确定");
+
+           /* var index = parent.layer.getFrameIndex(window.name);
+            parent.location.reload(index);*/
+
             return true;
         }else{
             //alert("取消");

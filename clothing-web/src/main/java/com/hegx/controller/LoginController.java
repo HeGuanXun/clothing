@@ -33,7 +33,7 @@ public class LoginController {
 	public UserService userService;
 
 
-	@RequestMapping(value = "/index")
+	@RequestMapping(value = "/index",method={RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView index(UserEntityDto userEntityDto,HttpServletRequest request) throws Exception
 	{
 		HttpSession session = request.getSession();
@@ -91,7 +91,7 @@ public class LoginController {
 		ImageTool.outputImage(session, response);
 	}
 
-	@RequestMapping(value = "/login", method = {RequestMethod.GET})
+	@RequestMapping(value = "/login", method = {RequestMethod.GET,RequestMethod.POST})
 	public ModelAndView login(HttpServletRequest request) throws Exception
 	{
 		request.getSession().setAttribute("checkCode","checkCode");

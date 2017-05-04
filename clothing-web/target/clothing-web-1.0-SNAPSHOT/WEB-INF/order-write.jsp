@@ -627,6 +627,10 @@ padding:5.4pt 5.4pt 0cm 5.4pt;height:26.9pt'>
 
         if(window.confirm('你确定要提交该订单吗？')){
             //alert("确定");
+
+            var index = parent.layer.getFrameIndex(window.name);
+            parent.location.reload(index);
+
             return true;
         }else{
             //alert("取消");

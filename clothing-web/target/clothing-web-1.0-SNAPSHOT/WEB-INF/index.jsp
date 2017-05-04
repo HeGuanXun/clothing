@@ -3,6 +3,7 @@
 	String path = request.getContextPath();
 	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML>
 <html>
@@ -45,9 +46,9 @@
 					<li class="dropDown dropDown_hover">
 						<a href="#" class="dropDown_A">${orgUserEntityDto.realName}<i class="Hui-iconfont">&#xe6d5;</i></a>
 						<ul class="dropDown-menu menu radius box-shadow">
-							<li><a href="javascript:;" onClick="myselfinfo()">个人信息</a></li>
+							<li><a href="javascript:;" onclick="myselfinfo()">个人信息</a></li>
 							<li><a href="#">切换账户</a></li>
-							<li><a href="login" onclick="exit()">退出</a></li>
+							<li><a onclick="loginout()">退出</a></li>
 					</ul>
 				</li>
 					<li id="Hui-msg"> <a href="#" title="消息"><span class="badge badge-danger">1</span><i class="Hui-iconfont" style="font-size:18px">&#xe68a;</i></a> </li>
@@ -71,7 +72,7 @@
 
 	<c:if test="${orgUserEntityDto.permission==1}">
 		<div class="menu_dropdown bk_2">
-			<dl id="menu-order">
+			<dl id="menu-order1">
 				<dt><i class="Hui-iconfont">&#xe613;</i> 订单管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 				<dd>
 					<ul>
@@ -81,10 +82,58 @@
 				</dd>
 			</dl>
 	</c:if>
-	<c:if test="${orgUserEntityDto.permission==2}"></c:if>
-	<c:if test="${orgUserEntityDto.permission==3}"></c:if>
-	<c:if test="${orgUserEntityDto.permission==4}"></c:if>
-	<c:if test="${orgUserEntityDto.permission==5}"></c:if>
+	<c:if test="${orgUserEntityDto.permission==2}">
+			<div class="menu_dropdown bk_2">
+				<dl id="menu-order2">
+					<dt><i class="Hui-iconfont">&#xe613;</i> 订单管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+					<dd>
+						<ul>
+							<li><a data-href="order/getFlowOrder/0" data-title="审核" href="javascript:void(0)">审核</a></li>
+							<li><a data-href="order/getFlowOrder/2" data-title="审批" href="javascript:void(0)">审批</a></li>
+							<li><a data-href="order/getFlowOrder/6" data-title="已完成回款订单" href="javascript:void(0)">已完成回款订单</a></li>
+						</ul>
+					</dd>
+				</dl>
+			</c:if>
+
+	<c:if test="${orgUserEntityDto.permission==3}">
+				<div class="menu_dropdown bk_2">
+					<dl id="menu-order3">
+						<dt><i class="Hui-iconfont">&#xe613;</i> 订单管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+						<dd>
+							<ul>
+								<li><a data-href="order/getFlowOrder/1" data-title="受理订单" href="javascript:void(0)">受理订单</a></li>
+							</ul>
+						</dd>
+					</dl>
+				</c:if>
+
+	<c:if test="${orgUserEntityDto.permission==4}">
+					<div class="menu_dropdown bk_2">
+						<dl id="menu-order3">
+							<dt><i class="Hui-iconfont">&#xe613;</i> 订单管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+							<dd>
+								<ul>
+									<li><a data-href="order/getFlowOrder/3" data-title="订单初款" href="javascript:void(0)">订单初款</a></li>
+									<li><a data-href="order/getFlowOrder/5" data-title="尾款订单" href="javascript:void(0)">尾款订单</a></li>
+									<li><a data-href="order/getFlowOrder/6" data-title="已完成回款订单" href="javascript:void(0)">已完成回款订单</a></li>
+								</ul>
+							</dd>
+						</dl>
+					</c:if>
+
+	<c:if test="${orgUserEntityDto.permission==5}">
+	<div class="menu_dropdown bk_2">
+		<dl id="menu-order3">
+			<dt><i class="Hui-iconfont">&#xe613;</i> 订单管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<li><a data-href="order/getFlowOrder/4" data-title="排单生产" href="javascript:void(0)">排单生产</a></li>
+					<li><a data-href="order/getFlowOrder/6" data-title="已完成回款订单" href="javascript:void(0)">已完成回款订单</a></li>
+				</ul>
+			</dd>
+		</dl>
+		</c:if>
 
 	<c:if test="${orgUserEntityDto.permission==0}">
 		<div class="menu_dropdown bk_2">
@@ -190,6 +239,22 @@ $(function(){
 		}
 	});*/
 });
+
+    function loginout() {
+			 $.ajax({
+			 async:true,//异步
+			 type: 'GET',
+			 url: 'login?param=exit',
+		 });
+        //var index = layer.getFrameIndex(window.name);
+        location.reload();
+       /* $.ajax({
+            async:true,//异步
+            type: 'GET',
+            url: 'login',
+        });*/
+    }
+
 /*个人信息*/
 function myselfinfo(){
 	layer.open({
@@ -199,7 +264,7 @@ function myselfinfo(){
 		maxmin: true,
 		shade:0.4,
 		title: '查看信息',
-		content: '<div>管理员信息</div>'
+		content: '<div>您好！</div>'
 	});
 }
 

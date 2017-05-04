@@ -155,8 +155,26 @@ public class OrderController  {
 
     /**新增订单**/
     @RequestMapping(value = "doEditOrder",method = {RequestMethod.POST})
-    private ModelAndView doEditOrder(OrderEntityDto orderEntityDto, Code code, Delivery delivery, Belong belong)
+    private ModelAndView doEditOrder(OrderEntityDto orderEntityDto, Code code, Delivery delivery, Belong belong,HttpServletRequest request)
     {
+
+        HttpSession session = request.getSession();
+        UserEntityDto orgUserEntityDto = (UserEntityDto)session.getAttribute("orgUserEntityDto");
+
+        if (orgUserEntityDto.getPermission()== Permission.market)
+        {
+            orderEntityDto =  orderService.getByOrderId(orderEntityDto.getOrderId());
+            if (orderEntityDto.getStatus()!=Status.add)
+            {
+                return new ModelAndView("error");
+            }
+            update(orderEntityDto,code,delivery,belong);
+            List<OrderEntityDto> orderList = orderService.getAll();
+            orderList = packager(orderList);
+            return new ModelAndView("list-myOrder").addObject("orderList",orderList);
+        }
+
+
         update(orderEntityDto,code,delivery,belong);
         List<OrderEntityDto> orderList = orderService.getAll();
         orderList = packager(orderList);

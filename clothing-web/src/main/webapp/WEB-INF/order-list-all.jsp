@@ -121,7 +121,12 @@
                         <td class="td-manage">
                             <c:choose>
                                 <c:when test="${orderEntityDto.status==6}">
-                                    <p style="color: green;font-size: 15px;text-align: center">suceess😂</p>
+                                <p style="color: green;font-size: 15px;text-align: center">suceess😂</p>
+                            </c:when>
+                                <c:when test="${orderEntityDto.status==7}">
+                                   <a title="删除" href="javascript:;"
+                                    onclick="admin_del(this,'${orderEntityDto.orderId}')" class="ml-5" style="text-decoration:none">
+                                    <i class="Hui-iconfont">&#xe6e2;</i></a>
                                 </c:when>
                                 <c:otherwise>
                                   <a title="编辑" href="javascript:;"

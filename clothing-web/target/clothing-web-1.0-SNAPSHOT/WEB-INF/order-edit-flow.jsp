@@ -468,8 +468,10 @@ padding:0cm 5.4pt 0cm 5.4pt;height:15.7pt'>
                         <select class="select" id="endReason" name="endReason">
                             <option></option>
                             <option value="客户要求停止该订单，不再受理！">客户要求停止该订单，不再受理！</option>
+                            <option value="订单长久，客户没有打款！">订单长久，客户没有打款！</option>
                             <option value="信息不完善">信息不完善</option>
                             <option value="该订单已过期，请重启动新的订单流程">该订单已过期，请重启动新的订单流程</option>
+                            <option value="业务员输入的款式无法受理">业务员输入的款式无法受理</option>
                             <option value="其他原因">其他原因</option>
                         </select>
                     </td>
@@ -531,49 +533,141 @@ padding:0cm 5.4pt 0cm 5.4pt;height:15.7pt'>
 <script type="text/javascript">
     $(document).ready(function() {
 
-        function orgSubmit(){
-            var customName = $('#customName').val();
-            var className  = $('#className').val();
-            var phoneNumber = $('#phoneNumber').val();
-            var qq = $('#qq').val();
-            var color = $('#color').val();
-            var money = $('#money').val();
-            var earnest = $('#earnest').val();
-            var sendDate = $('#sendDate').val();
-            var mxs = $('#mxs').val();
-            var ms = $('#ms').val();
-            var mm = $('#mm').val();
-            var ml = $('#ml').val();
-            var mxl = $('#mxl').val();
-            var mxxl = $('#mxxl').val();
-            var way = $('#way').val();
-            var personName = $('#personName').val();
-            var relationPhone = $('#relationPhone').val();
-            var ss_province = $('#ss_province').val();
-            var ss_city = $('#ss_city').val();
-            var ss_county = $('#ss_county').val();
-            var address = $('#address').val();
-            var s_province = $('#s_province').val();
-            var s_city = $('#s_city').val();
-            var s_county = $('#s_county').val();
-            var school = $('#school').val();
+        function orgSubmit() {
+            function orgSubmit() {
+                var customName = $('#customName').val();
+                var className = $('#className').val();
+                var phoneNumber = $('#phoneNumber').val();
+                var qq = $('#qq').val();
+                var color = $('#color').val();
+                var money = $('#money').val();
+                var earnest = $('#earnest').val();
+                var sendDate = $('#sendDate').val();
+                var mxs = $('#mxs').val();
+                var ms = $('#ms').val();
+                var mm = $('#mm').val();
+                var ml = $('#ml').val();
+                var mxl = $('#mxl').val();
+                var mxxl = $('#mxxl').val();
+                var way = $('#way').val();
+                var personName = $('#personName').val();
+                var relationPhone = $('#relationPhone').val();
+                var ss_province = $('#ss_province').val();
+                var ss_city = $('#ss_city').val();
+                var ss_county = $('#ss_county').val();
+                var address = $('#address').val();
+                var s_province = $('#s_province').val();
+                var s_city = $('#s_city').val();
+                var s_county = $('#s_county').val();
+                var school = $('#school').val();
 
-            if(customName=="")
-            {
-                layer.msg('客户姓名不能为空！',{icon:1,time:2000});
-                return false;
-            }
+                if (ss_province == "") {
+                    layer.msg('收件地址省会信息不能为空！', {icon: 1, time: 3000});
+                    return false;
+                }
+                if (ss_city == "") {
+                    layer.msg('收件地址地级市信息不能为空！', {icon: 1, time: 3000});
+                    return false;
+                }
+                if (ss_county == "") {
+                    layer.msg('收件地址县城信息不能为空！', {icon: 1, time: 3000});
+                    return false;
+                }
 
-            if(window.confirm('你确定要受理该订单吗？')){
-                var index = parent.layer.getFrameIndex(window.name);
-                parent.location.reload(index);
-                return true;
-            }else{
-                //alert("取消");
-                return false;
+                if (s_province == "") {
+                    layer.msg('订单归属地省会信息不能为空！', {icon: 1, time: 3000});
+                    return false;
+                }
+                if (s_city == "") {
+                    layer.msg('订单归属地地级市信息不能为空！', {icon: 1, time: 3000});
+                    return false;
+                }
+                if (s_county == "") {
+                    layer.msg('订单归属地县城信息不能为空！', {icon: 1, time: 3000});
+                    return false;
+                }
+
+                if (customName == "") {
+                    layer.msg('客户姓名不能为空！', {icon: 1, time: 3000});
+                    return false;
+                }
+                if (className == "") {
+                    layer.msg('单位（班级）不能为空！', {icon: 1, time: 3000});
+                    return false;
+                }
+                if (phoneNumber == "") {
+                    layer.msg('电话不能为空！', {icon: 1, time: 3000});
+                    return false;
+                }
+                if (qq == "") {
+                    layer.msg('qq不能为空！', {icon: 1, time: 3000});
+                    return false;
+                }
+                if (color == "") {
+                    layer.msg('颜色不能为空！', {icon: 1, time: 3000});
+                    return false;
+                }
+                if (money == "") {
+                    layer.msg('成交金额不能为空！', {icon: 1, time: 3000});
+                    return false;
+                }
+                if (earnest == "") {
+                    layer.msg('定金不能为空！', {icon: 1, time: 3000});
+                    return false;
+                }
+                if (sendDate == "") {
+                    layer.msg('请选择发货日期！', {icon: 1, time: 3000});
+                    return false;
+                }
+                if (way == "") {
+                    layer.msg('请选择配送方式！', {icon: 1, time: 3000});
+                    return false;
+                }
+                if (personName == "") {
+                    layer.msg('联系人名字不能为空！', {icon: 1, time: 3000});
+                    return false;
+                }
+                if (relationPhone == "") {
+                    layer.msg('收件人电话不能为空！', {icon: 1, time: 3000});
+                    return false;
+                }
+                if (address == "") {
+                    layer.msg('请填写收件人具体地址！', {icon: 1, time: 3000});
+                    return false;
+                }
+                if (mxs < 0 || ms < 0 || mm < 0 || ml < 0 || mxl < 0 || mxxl < 0 || mxxxl < 0) {
+                    layer.msg('订单尺码不能为负数！', {icon: 1, time: 3000});
+                    return false;
+                }
+                test(mxs);
+                test(ms);
+                test(mm);
+                test(ml);
+                test(mxl);
+                test(mxxl);
+                test(mxxxl);
+
+                function test(code) {
+                    if (code < 0) {
+                        layer.msg("尺码" + code + "不能为负数");
+                        return false;
+                    }
+                }
+
+                if (window.confirm('你确定要提受理订单吗？')) {
+                    //alert("确定");
+
+                    var index = parent.layer.getFrameIndex(window.name);
+                    parent.location.reload(index);
+
+
+                    return true;
+                } else {
+                    //alert("取消");
+                    return false;
+                }
             }
         }
-
     });
 
 
@@ -581,8 +675,12 @@ padding:0cm 5.4pt 0cm 5.4pt;height:15.7pt'>
         $('#message').val("rallBack");
         if(window.confirm('你确定要回退该订单吗？')){
             //alert("确定");
+
             var index = parent.layer.getFrameIndex(window.name);
             parent.location.reload(index);
+
+
+
             return true;
         }else{
             //alert("取消");
@@ -598,8 +696,11 @@ padding:0cm 5.4pt 0cm 5.4pt;height:15.7pt'>
     }
         if(window.confirm('你确定要终止该订单吗？')){
             //alert("确定");
+
             var index = parent.layer.getFrameIndex(window.name);
             parent.location.reload(index);
+
+
             return true;
         }else{
             //alert("取消");

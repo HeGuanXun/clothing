@@ -26,14 +26,15 @@ public class AuthitorFilter implements Filter {
 		    HttpServletRequest req=(HttpServletRequest) request;
 		                 HttpSession session=req.getSession();
 
-		                     Object userId=session.getAttribute("userId");
-							 Object checkCode =	session.getAttribute("checkCode");
-							 session.setMaxInactiveInterval(40*60);
+						     Object checkCode = session.getAttribute("checkCode");
+							 session.setMaxInactiveInterval(40*60);//session有效时长
 
-		                     if(userId!=null || checkCode!=null)
-
+							if(req.getParameter("param")!=null&&req.getParameter("param").equals("exit"))
+							{
+								session.invalidate();
+							}
+		                     if(session.getAttribute("orgUserEntityDto")!=null || checkCode!=null)
 		                    	 chain.doFilter(request, response);
-
 		                     else {
 								 req.getRequestDispatcher("/login").forward(request, response);
 							}

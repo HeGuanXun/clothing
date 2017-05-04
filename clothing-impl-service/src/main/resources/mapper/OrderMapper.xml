@@ -200,7 +200,7 @@
 		FROM
 		<include refid="t_order" />
 		<![CDATA[
-		 WHERE orderId = #{orderId}
+		 WHERE orderId = #{orderId} ORDER BY orderId DESC
 		]]>
 	</select>
 
@@ -210,7 +210,7 @@
 		<include refid="selectFieldSQL" />
 		FROM
 		<include refid="t_order" />
-		/*WHERE endReason is NULL*/
+		ORDER BY orderId DESC
 	</select>
 
 	<!-- 查询所有流程状态的订单 -->
@@ -218,7 +218,7 @@
 		<include refid="selectFieldSQL" />
 		FROM
 		<include refid="t_order" />
-		WHERE status = #{status}
+		WHERE status = #{status} ORDER BY orderId DESC
 	</select>
 
 	<!-- 根据用户查询所有订单 -->
@@ -226,7 +226,7 @@
 		<include refid="selectFieldSQL" />
 		FROM
 		<include refid="t_order" />
-		WHERE userId = #{userId}
+		WHERE userId = #{userId} ORDER BY orderId DESC
 	</select>
 
 
